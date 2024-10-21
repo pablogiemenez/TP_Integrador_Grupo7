@@ -1,6 +1,9 @@
 package com.example.tp_integrador_grupo7;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,7 +12,11 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    TextView txt_mensaje;
+    EditText et_nombreUsuario;
+    EditText et_contrasenia;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,5 +27,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        txt_mensaje=  findViewById(R.id.txt_mensaje);
+        et_nombreUsuario=findViewById(R.id.et_nombreUsuario);
+        et_contrasenia=findViewById(R.id.et_contrasenia);
     }
 }

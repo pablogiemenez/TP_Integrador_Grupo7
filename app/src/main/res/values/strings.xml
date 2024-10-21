@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TP_Integrador_Grupo7</string>
+    <string name="inicio_sesion">Inicio de Sesion</string>
+    <string name="nombre_usuario">nombre de usuario</string>
+    <string name="contrasenia">contraseña</string>
+    <string name="btn_inicio_sesion">Iniciar sesion</string>
 </resources>
