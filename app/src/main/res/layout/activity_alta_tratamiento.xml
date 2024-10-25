@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvMedicamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="60dp"
+        android:text="Nombre Medicamento"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etMedicamento"
+        android:layout_width="303dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:hint="medicamento"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMedicamento" />
+
+    <TextView
+        android:id="@+id/tvDosis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Dosis (1 cada:)"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/etMedicamento"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <EditText
+        android:id="@+id/etDosis"
+        android:layout_width="306dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:hint="ej: 8hs "
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDosis" />
+
+    <TextView
+        android:id="@+id/tvDuracion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Duracion"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/etDosis"
+        tools:layout_editor_absoluteX="36dp" />
+
+    <EditText
+        android:id="@+id/etDuracion"
+        android:layout_width="309dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="36dp"
+        android:ems="10"
+        android:hint="2 semanas"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDuracion" />
+
+    <TextView
+        android:id="@+id/tvCita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="48dp"
+        android:text="Numero de Cita"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDuracion" />
+
+    <Spinner
+        android:id="@+id/spinnerCitas"
+        android:layout_width="309dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCita" />
+
+    <Button
+        android:id="@+id/btnGuardarTratamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCitas" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

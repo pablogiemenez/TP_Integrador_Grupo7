@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvDueño"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,18 +29,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <TextView
-        android:id="@+id/tvEdad"
+        android:id="@+id/tvNacimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Edad"
+        android:text="Nacimiento"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
     <EditText
-        android:id="@+id/etEdad"
+        android:id="@+id/etNacimiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -47,58 +48,98 @@
         android:hint="10"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEdad" />
-
-    <RadioGroup
-        android:id="@+id/rgEdad"
-        android:layout_width="214dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEdad">
-
-        <RadioButton
-            android:id="@+id/rbMeses"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Meses" />
-
-        <RadioButton
-            android:id="@+id/rbAnios"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Años" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/tvNacimiento" />
 
     <TextView
-        android:id="@+id/tvVacuna"
+        android:id="@+id/tvTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Vacuna"
+        android:text="Tipo"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgEdad" />
+        app:layout_constraintTop_toBottomOf="@+id/etNacimiento" />
 
-    <RadioGroup
-        android:id="@+id/rgVacuna"
-        android:layout_width="210dp"
-        android:layout_height="96dp"
+    <EditText
+        android:id="@+id/etTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:ems="10"
+        android:hint="Perro/Gato/Tortuga/Ave"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVacuna">
+        app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
-        <RadioButton
-            android:id="@+id/rbSi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Si" />
+    <TextView
+        android:id="@+id/tvRaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="Raza"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTipo" />
 
-        <RadioButton
-            android:id="@+id/rbNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="No" />
-    </RadioGroup>
+    <EditText
+        android:id="@+id/etRaza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:ems="10"
+        android:hint="Raza"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRaza" />
+
+    <TextView
+        android:id="@+id/tvDueño"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Dueño"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etRaza" />
+
+    <Spinner
+        android:id="@+id/spinnerDueño"
+        android:layout_width="210dp"
+        android:layout_height="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvDueño"
+        tools:layout_editor_absoluteX="32dp" />
+
+    <ImageView
+        android:id="@+id/ivMascota"
+        android:layout_width="149dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnFoto"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDueño"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="32dp"
+        android:text="Cambiar Foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDueño" />
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="648dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
