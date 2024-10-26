@@ -19,13 +19,14 @@
     <!-- Título de la pantalla -->
 
     <!-- Campo para el Nombre del Propietario -->
+
     <ImageView
         android:id="@+id/img_agregar_usuario"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/usuario"
-        tools:layout_editor_absoluteX="330dp"
-        tools:layout_editor_absoluteY="58dp" />
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="54dp" />
 
     <TextView
         android:id="@+id/tv_tituloRegistro"
