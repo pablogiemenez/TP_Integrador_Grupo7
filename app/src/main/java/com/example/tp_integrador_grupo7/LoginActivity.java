@@ -1,6 +1,7 @@
 package com.example.tp_integrador_grupo7;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txt_mensaje;
     EditText et_nombreUsuario;
     EditText et_contrasenia;
+    TextView txt_registro;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,5 +32,10 @@ public class LoginActivity extends AppCompatActivity {
         txt_mensaje=  findViewById(R.id.txt_mensaje);
         et_nombreUsuario=findViewById(R.id.et_nombreUsuario);
         et_contrasenia=findViewById(R.id.et_contrasenia);
+        txt_registro=findViewById(R.id.txt_registrar);
+        txt_registro.setOnClickListener(v->{
+            Intent i=new Intent(this,AltaVeterinarioActivity.class);
+            startActivity(i);
+        });
     }
 }

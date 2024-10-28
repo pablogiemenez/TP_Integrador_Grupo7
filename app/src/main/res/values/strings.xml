@@ -11,5 +11,8 @@
     <string name="mail">mail</string>
     <string name="ejemplo_mail">ej: carlos@gmail.com</string>
     <string name="ejemplo_nombre_usuario">ej: Carlos123</string>
-    <string name="registrar">Registrar</string>
+    <string name="registrar">registrar</string>
+    <string name="volver">volver</string>
+
+
 </resources>
