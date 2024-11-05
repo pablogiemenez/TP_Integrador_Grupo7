@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Home extends AppCompatActivity {
 
     private TextView textViewUsuario;
-    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion;
+    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion, btnPropietarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,7 @@ public class Home extends AppCompatActivity {
         btnReportesMedicos = findViewById(R.id.button8);
         btnVeterinarios = findViewById(R.id.button9);
         btnConfiguracion = findViewById(R.id.button10);
+        btnPropietarios=findViewById(R.id.btn_propietarios);
 
         // Configurar el nombre de usuario
         String nombreUsuario = getIntent().getStringExtra("nombre_usuario");
@@ -33,6 +34,10 @@ public class Home extends AppCompatActivity {
         } else {
             textViewUsuario.setText("Usuario: desconocido");
         }
+        btnPropietarios.setOnClickListener(v->{
+            Intent i= new Intent(this,AltaPropietariosActivity.class);
+            startActivity(i);
+        });
 
         /* Configurar las acciones de los botones
         btnCitas.setOnClickListener(v -> {

@@ -32,6 +32,9 @@
         <activity
             android:name=".Home"
             android:exported="true" />
+        <activity
+            android:name=".AltaPropietariosActivity" />
+
 
     </application>
 

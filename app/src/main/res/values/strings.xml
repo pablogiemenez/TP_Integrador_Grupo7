@@ -13,6 +13,9 @@
     <string name="ejemplo_nombre_usuario">ej: Carlos123</string>
     <string name="registrar">registrar</string>
     <string name="volver">volver</string>
+    <string name="propietarios">Propietarios</string>
+    <string name="dni">Nro documento</string>
+   <string name="nuevo_registro">Nuevo registro</string>
 
 
 </resources>

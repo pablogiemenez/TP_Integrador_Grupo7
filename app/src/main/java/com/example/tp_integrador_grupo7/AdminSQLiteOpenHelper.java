@@ -15,6 +15,9 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("create table veterinarios (id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT NOT NULL, mail TEXT NOT NULL, telefono TEXT, contrasenia TEXT NOT NULL, " +
                 "nombre_usuario TEXT NOT NULL)");
+        sqLiteDatabase.execSQL("CREATE TABLE propietarios (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "nombre TEXT NOT NULL, mail TEXT NOT NULL, telefono TEXT NOT NULL, dni TEXT NOT NULL)");
+
     }
 
     @Override
