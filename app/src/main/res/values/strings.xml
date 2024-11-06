@@ -15,7 +15,7 @@
     <string name="volver">volver</string>
     <string name="propietarios">Propietarios</string>
     <string name="dni">Nro documento</string>
-   <string name="nuevo_registro">Nuevo registro</string>
+    <string name="nuevo_registro">Nuevo registro</string>
 
 
 </resources>
