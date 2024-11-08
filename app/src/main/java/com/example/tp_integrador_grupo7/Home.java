@@ -1,6 +1,8 @@
 package com.example.tp_integrador_grupo7;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Home extends AppCompatActivity {
 
-    private TextView textViewUsuario;
+    private TextView textViewUsuario, txtCerrarSesion,txtIdUsuario;
     private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion, btnPropietarios;
 
     @Override
@@ -18,6 +20,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.home);
 
         // Inicialización de los elementos de la interfaz
+        txtIdUsuario=findViewById(R.id.txt_IdUsuario);
+        txtCerrarSesion=findViewById(R.id.txt_cerrarSesion);
         textViewUsuario = findViewById(R.id.textView9);
         btnCitas = findViewById(R.id.btnCitas);
         btnMascotas = findViewById(R.id.button5);
@@ -28,11 +32,28 @@ public class Home extends AppCompatActivity {
         btnPropietarios=findViewById(R.id.btn_propietarios);
 
         // Configurar el nombre de usuario
-        String nombreUsuario = getIntent().getStringExtra("nombre_usuario");
-        if (nombreUsuario != null) {
-            textViewUsuario.setText("Usuario: " + nombreUsuario);
+        SessionVeterinario session= (SessionVeterinario) getApplicationContext();
+        String nombreUsuarioSession =session.getNombreUsuarioSession();
+        Integer idSession=session.getIdSession();
+        if(nombreUsuarioSession==null || idSession==null) {
+            String nombreUsuario = getIntent().getStringExtra("nombre_usuario");
+
+            session.setNombreUsuarioSession(nombreUsuario);
+            nombreUsuarioSession=session.getNombreUsuarioSession();
+            Integer id=obtenerIdXNombreUsuario(nombreUsuarioSession);
+            session.setIdSession(id);
+            idSession=session.getIdSession();
+
+        }
+        if (nombreUsuarioSession != null) {
+            textViewUsuario.setText("Usuario: " + nombreUsuarioSession);
         } else {
             textViewUsuario.setText("Usuario: desconocido");
+        }
+        if(idSession!=-1){
+            txtIdUsuario.setText("ID: "+ idSession);
+        }else{
+            txtIdUsuario.setText("ID no encontrado");
         }
         btnPropietarios.setOnClickListener(v->{
             Intent i= new Intent(this,AltaPropietariosActivity.class);
@@ -69,5 +90,23 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(Home.this, ConfiguracionActivity.class);
             startActivity(intent);
         });*/
+        txtCerrarSesion.setOnClickListener(v->{
+            session.setIdSession(null);
+            session.setNombreUsuarioSession(null);
+            Intent i= new Intent(this,LoginActivity.class);
+            startActivity(i);
+        });
+    }
+    public Integer obtenerIdXNombreUsuario(String nombreUsuario){
+        Integer idObtenido=-1;
+        if(nombreUsuario!=null){
+            AdminSQLiteOpenHelper admin=new AdminSQLiteOpenHelper(this,"consultorioVeterinario",null,1);
+            SQLiteDatabase BaseDeDatos= admin.getReadableDatabase();
+            Cursor cursor= BaseDeDatos.rawQuery("SELECT id FROM veterinarios where nombre_usuario=?", new String[]{nombreUsuario});
+            if(cursor.moveToFirst()){
+                idObtenido=cursor.getInt(0);
+            }
+        }
+        return idObtenido;
     }
 }

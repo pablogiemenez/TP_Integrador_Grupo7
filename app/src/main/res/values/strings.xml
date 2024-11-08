@@ -16,6 +16,10 @@
     <string name="propietarios">Propietarios</string>
     <string name="dni">Nro documento</string>
     <string name="nuevo_registro">Nuevo registro</string>
-
+    <string name="nueva_cita">Nueva cita</string>
+    <string name="fecha">fecha</string>
+    <string name="horario">horario</string>
+    <string name="motivo">motivo</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
 
 </resources>
