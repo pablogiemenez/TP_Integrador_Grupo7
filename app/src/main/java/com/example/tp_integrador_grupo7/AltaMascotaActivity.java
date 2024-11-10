@@ -3,12 +3,10 @@ package com.example.tp_integrador_grupo7;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -53,7 +51,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
            registro.put("fecha_nac", nacimiento);
            registro.put("tipo", tipo);
            registro.put("raza", raza);
-           registro.put("idPropietario", buscarIdPropietario());
+           registro.put("idPropietario", buscarIdPropietario(duenio));
 
            long idRegistro= BaseDeDatos.insert("propietarios",null,registro);
 
@@ -75,15 +73,14 @@ public class AltaMascotaActivity extends AppCompatActivity {
         }
    }
 
-   public int buscarIdPropietario(){
+   public int buscarIdPropietario(String nombreProp){
        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
        SQLiteDatabase db = admin.getWritableDatabase();
        int id = 0;
 
-       String nombre = etNombre.getText().toString();
 
-       if(!nombre.isEmpty()){
-           Cursor fila = db.rawQuery("select id from propietarios where nombre = "+ nombre, null);
+       if(!nombreProp.isEmpty()){
+           Cursor fila = db.rawQuery("select id from propietarios where nombre = "+ nombreProp, null);
 
            if(fila.moveToFirst()){
                 id = fila.getInt(0);
@@ -95,7 +92,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
            }
        }
        else {
-           Toast.makeText(this, "Introduzca un nombre", Toast.LENGTH_SHORT).show();
+           Toast.makeText(this, "Introduzca un nombreProp", Toast.LENGTH_SHORT).show();
        }
        return id;
    }
