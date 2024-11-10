@@ -35,6 +35,7 @@
             android:name=".Home"
             android:exported="true" />
         <activity android:name=".AltaPropietariosActivity" />
+        <activity android:name=".AltaMascotaActivity" />
 
     </application>
 
