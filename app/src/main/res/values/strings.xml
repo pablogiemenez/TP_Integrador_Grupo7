@@ -21,5 +21,6 @@
     <string name="horario">horario</string>
     <string name="motivo">motivo</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="informe">Informe</string>
 
 </resources>
