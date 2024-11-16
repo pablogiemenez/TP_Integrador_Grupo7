@@ -53,7 +53,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
            registro.put("raza", raza);
            registro.put("idPropietario", buscarIdPropietario(duenio));
 
-           long idRegistro= BaseDeDatos.insert("propietarios",null,registro);
+           long idRegistro= BaseDeDatos.insert("mascotas",null,registro);
 
            BaseDeDatos.close();
            etNombre.setText("");
