@@ -24,5 +24,12 @@
     <string name="informe">Informe</string>
     <string name="mascota">mascota</string>
     <string name="agregar_cita">Agregar Cita</string>
+    <string name="btn_citas">Citas</string>
+    <string name="btn_mascotas">Mascotas</string>
+    <string name="btn_tratamientos">Tratamientos</string>
+    <string name="btn_reportes_medicos">Reportes Medicos</string>
+    <string name="btn_veterinarios">Veterinarios</string>
+    <string name="btn_configuracion">Configuracion</string>
+    <string name="titulo_home">Veterinaria Digital App</string>
 
 </resources>

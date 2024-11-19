@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AltaCitaActivity extends AppCompatActivity {
     private EditText etFecha, etMotivo;
-    private Spinner spinnerMascota, spinnerVeterinario;
+    private Spinner spinnerMascota;
     private Button btnGuardarCita;
     private TextView txtVolver;
     private Integer idVeterinario;
@@ -84,7 +84,7 @@ public class AltaCitaActivity extends AppCompatActivity {
         etFecha.setText("");
         etMotivo.setText("");
         spinnerMascota.setSelection(0);
-        spinnerVeterinario.setSelection(0);
+
     }
 
     public int buscarIdMascota(String nombreMascota) {
