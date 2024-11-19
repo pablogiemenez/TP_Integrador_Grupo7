@@ -22,5 +22,7 @@
     <string name="motivo">motivo</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="informe">Informe</string>
+    <string name="mascota">mascota</string>
+    <string name="agregar_cita">Agregar Cita</string>
 
 </resources>

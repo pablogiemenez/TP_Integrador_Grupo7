@@ -60,13 +60,13 @@ public class Home extends AppCompatActivity {
             startActivity(i);
         });
 
-        /* Configurar las acciones de los botones
+         //Configurar las acciones de los botones
         btnCitas.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, CitasActivity.class);
+            Intent intent = new Intent(Home.this, AltaCitaActivity.class);
             startActivity(intent);
         });
 
-        btnMascotas.setOnClickListener(v -> {
+        /*btnMascotas.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, MascotasActivity.class);
             startActivity(intent);
         });

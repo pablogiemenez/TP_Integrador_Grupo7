@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/registrar"
-        android:textColor="#0A477E"
+        android:textColor="@color/blue_link"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_IniciarSesion" />

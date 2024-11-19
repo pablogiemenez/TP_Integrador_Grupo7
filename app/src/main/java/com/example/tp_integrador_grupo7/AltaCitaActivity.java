@@ -1,12 +1,15 @@
 package com.example.tp_integrador_grupo7;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,21 +18,25 @@ public class AltaCitaActivity extends AppCompatActivity {
     private EditText etFecha, etMotivo;
     private Spinner spinnerMascota, spinnerVeterinario;
     private Button btnGuardarCita;
-
+    private TextView txtVolver;
+    private Integer idVeterinario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_cita);
         initVar();
-
+        txtVolver.setOnClickListener(v->volverHome());
         btnGuardarCita.setOnClickListener(view -> guardarCita());
     }
-
+    private void volverHome(){
+        Intent i= new Intent(this, Home.class);
+        startActivity(i);
+    }
     private void initVar() {
         etFecha = findViewById(R.id.etFecha);
         etMotivo = findViewById(R.id.etMotivo);
         spinnerMascota = findViewById(R.id.spinnerMascota);
-        spinnerVeterinario = findViewById(R.id.spinnerVeterinario);
+        txtVolver=findViewById(R.id.txt_volver_alta_cita);
         btnGuardarCita = findViewById(R.id.btnGuardarCita);
     }
 
@@ -40,13 +47,15 @@ public class AltaCitaActivity extends AppCompatActivity {
         String fecha = etFecha.getText().toString();
         String motivo = etMotivo.getText().toString();
         String nombreMascota = spinnerMascota.getSelectedItem().toString();
-        String nombreVeterinario = spinnerVeterinario.getSelectedItem().toString();
 
-        if (!fecha.isEmpty() && !motivo.isEmpty() && !nombreMascota.isEmpty() && !nombreVeterinario.isEmpty()) {
+
+        if (!fecha.isEmpty() && !motivo.isEmpty() && !nombreMascota.isEmpty()) {
             int idMascota = buscarIdMascota(nombreMascota);
-            int idVeterinario = buscarIdVeterinario(nombreVeterinario);
+            SessionVeterinario session= new SessionVeterinario();
 
-            if (idMascota != 0 && idVeterinario != 0) {
+            idVeterinario = session.getIdSession();
+
+            if (idMascota != 0 && idVeterinario!=null) {
                 ContentValues registro = new ContentValues();
                 registro.put("fecha", fecha);
                 registro.put("motivo", motivo);
