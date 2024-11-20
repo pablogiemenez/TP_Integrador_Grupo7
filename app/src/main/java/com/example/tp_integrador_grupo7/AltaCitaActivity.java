@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.se.omapi.Session;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -13,6 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_integrador_grupo7.entidades.Mascotas;
+import com.example.tp_integrador_grupo7.entidades.Propietarios;
+
+import java.util.ArrayList;
 
 public class AltaCitaActivity extends AppCompatActivity {
     private EditText etFecha, etMotivo;
@@ -25,19 +31,52 @@ public class AltaCitaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_cita);
         initVar();
+
+        ArrayList<Mascotas> listaMascotas = mostrarMascotas();
+        ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(getApplicationContext(),
+                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        spinnerMascota.setAdapter(arrayAdapter);
+
         txtVolver.setOnClickListener(v->volverHome());
         btnGuardarCita.setOnClickListener(view -> guardarCita());
     }
+
     private void volverHome(){
         Intent i= new Intent(this, Home.class);
         startActivity(i);
     }
+
     private void initVar() {
         etFecha = findViewById(R.id.etFecha);
         etMotivo = findViewById(R.id.etMotivo);
         spinnerMascota = findViewById(R.id.spinnerMascota);
         txtVolver=findViewById(R.id.txt_volver_alta_cita);
         btnGuardarCita = findViewById(R.id.btnGuardarCita);
+    }
+
+    private ArrayList<Mascotas> mostrarMascotas(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        ArrayList<Mascotas> listaMascotas = new ArrayList<Mascotas>();
+
+        try {
+            Cursor filas = bd.rawQuery("SELECT id, nombre FROM mascotas", null);
+            if(filas.moveToFirst()){
+                do{
+                    Mascotas mascotas = new Mascotas();
+                    mascotas.setId(filas.getInt(0));
+                    mascotas.setNombre(filas.getString(1));
+                    listaMascotas.add(mascotas);
+                } while (filas.moveToNext());
+            } else {
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return listaMascotas;
     }
 
     public void guardarCita() {

@@ -66,17 +66,17 @@ public class Home extends AppCompatActivity {
             startActivity(intent);
         });
 
-        /*btnMascotas.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, MascotasActivity.class);
+        btnMascotas.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, AltaMascotaActivity.class);
             startActivity(intent);
         });
 
         btnTratamientos.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, TratamientosActivity.class);
+            Intent intent = new Intent(Home.this, AltaTratamientoActivity.class);
             startActivity(intent);
         });
 
-        btnReportesMedicos.setOnClickListener(v -> {
+        /*btnReportesMedicos.setOnClickListener(v -> {
             Intent intent = new Intent(Home.this, ReportesMedicosActivity.class);
             startActivity(intent);
         });

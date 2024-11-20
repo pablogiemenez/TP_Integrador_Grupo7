@@ -4,12 +4,17 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_integrador_grupo7.entidades.Propietarios;
+
+import java.util.ArrayList;
 
 public class AltaMascotaActivity extends AppCompatActivity {
     private EditText etNombre, etNacimiento, etTipo, etRaza;
@@ -20,6 +25,11 @@ public class AltaMascotaActivity extends AppCompatActivity {
        super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_alta_mascota);
        innitVar();
+
+       ArrayList<Propietarios> listaPropietarios = mostrarPropietarios();
+       ArrayAdapter<Propietarios> arrayAdapter = new ArrayAdapter<Propietarios>(getApplicationContext(),
+               androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+       spinnerDuenio.setAdapter(arrayAdapter);
 
        btnGuardar.setOnClickListener(view -> {
            guardarMascota();
@@ -35,6 +45,31 @@ public class AltaMascotaActivity extends AppCompatActivity {
        btnGuardar = findViewById(R.id.btnGuardar);
    }
 
+   private ArrayList<Propietarios> mostrarPropietarios(){
+       AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
+       SQLiteDatabase bd = admin.getWritableDatabase();
+       ArrayList<Propietarios> listaPropietarios = new ArrayList<Propietarios>();
+
+       try {
+           Cursor filas = bd.rawQuery("SELECT id, nombre FROM propietarios", null);
+           if(filas.moveToFirst()){
+               do{
+                   Propietarios prop = new Propietarios();
+                   prop.setId(filas.getInt(0));
+                   prop.setNombre(filas.getString(1));
+                   listaPropietarios.add(prop);
+               } while (filas.moveToNext());
+           } else {
+               return null;
+           }
+       }
+       catch (Exception e){
+           e.printStackTrace();
+           return null;
+       }
+    return listaPropietarios;
+   }
+
    public void guardarMascota(){
        AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"consultorioVeterinario",null,1);
        SQLiteDatabase BaseDeDatos=admin.getWritableDatabase();
@@ -45,32 +80,36 @@ public class AltaMascotaActivity extends AppCompatActivity {
        String raza = etRaza.getText().toString();
        String duenio = spinnerDuenio.getSelectedItem().toString();
 
-       if(!nombre.isEmpty()&&!nacimiento.isEmpty()&&!tipo.isEmpty()&&!raza.isEmpty()&&!duenio.isEmpty()) {
-           ContentValues registro = new ContentValues();
-           registro.put("nombre", nombre);
-           registro.put("fecha_nac", nacimiento);
-           registro.put("tipo", tipo);
-           registro.put("raza", raza);
-           registro.put("idPropietario", buscarIdPropietario(duenio));
+       try {
+           if (!nombre.isEmpty() && !nacimiento.isEmpty() && !tipo.isEmpty() && !raza.isEmpty() && !duenio.isEmpty()) {
+               ContentValues registro = new ContentValues();
+               registro.put("nombre", nombre);
+               registro.put("fecha_nac", nacimiento);
+               registro.put("tipo", tipo);
+               registro.put("raza", raza);
+               registro.put("idPropietario", buscarIdPropietario(duenio));
 
-           long idRegistro= BaseDeDatos.insert("mascotas",null,registro);
+               long idRegistro = BaseDeDatos.insert("mascotas", null, registro);
 
-           BaseDeDatos.close();
-           etNombre.setText("");
-           etNacimiento.setText("");
-           etTipo.setText("");
-           etRaza.setText("");
-           spinnerDuenio.setSelection(0);
+               BaseDeDatos.close();
+               etNombre.setText("");
+               etNacimiento.setText("");
+               etTipo.setText("");
+               etRaza.setText("");
+               spinnerDuenio.setSelection(0);
 
-           if(idRegistro!=-1){
-               Toast.makeText(this, "Mascota agregada con exito", Toast.LENGTH_SHORT).show();
-           }else{
-               Toast.makeText(this, "No se pudo agregar", Toast.LENGTH_SHORT).show();
+               if (idRegistro != -1) {
+                   Toast.makeText(this, "Mascota agregada con exito", Toast.LENGTH_SHORT).show();
+               } else {
+                   Toast.makeText(this, "No se pudo agregar", Toast.LENGTH_SHORT).show();
+               }
+           } else {
+               Toast.makeText(this, "Complete los campos", Toast.LENGTH_SHORT).show();
            }
        }
-       else{
-           Toast.makeText(this, "Complete los campos", Toast.LENGTH_SHORT).show();
-        }
+       catch (Exception e){
+           e.printStackTrace();
+       }
    }
 
    public int buscarIdPropietario(String nombreProp){

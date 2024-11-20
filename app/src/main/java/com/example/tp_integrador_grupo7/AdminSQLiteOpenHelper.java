@@ -35,6 +35,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS veterinarios");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS propietarios");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tratamientos");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS mascotas");
         onCreate(sqLiteDatabase);
     }
 
