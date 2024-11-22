@@ -26,7 +26,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 "medicamento TEXT NOT NULL, dosis TEXT NOT NULL, duracion TEXT NOT NULL, numero_cita TEXT NOT NULL)");
 
         sqLiteDatabase.execSQL("CREATE TABLE mascotas (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nombre TEXT NOT NULL, tipo TEXT NOT NULL, raza TEXT NOT NULL, fecha_nac TEXT NOT NULL, foto IMG NOT Null, idPropietario INTEGER NOT NULL)");
+                "nombre TEXT NOT NULL, tipo TEXT NOT NULL, raza TEXT NOT NULL, fecha_nac TEXT NOT NULL, foto BLOB, idPropietario INTEGER NOT NULL)");
+
+        sqLiteDatabase.execSQL("CREATE TABLE citas (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " fecha DATE NOT NULL, motivo TEXT NOT NULL, id_mascota INTEGER NOT NULL," +
+                "id_veterinario TEXT NOT NULL)");
     }
 
     @Override
@@ -36,6 +40,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS propietarios");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS tratamientos");
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS mascotas");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS citas");
         onCreate(sqLiteDatabase);
     }
 

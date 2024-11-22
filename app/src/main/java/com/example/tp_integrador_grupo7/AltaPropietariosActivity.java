@@ -2,6 +2,7 @@ package com.example.tp_integrador_grupo7;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -52,34 +53,53 @@ public class AltaPropietariosActivity extends AppCompatActivity {
         String mail= etEmail.getText().toString();
         String telefono= etTelefono.getText().toString();
         String dni= etDni.getText().toString();
+        if(!Exist(dni)) {
+            if (!nombrePropietario.isEmpty() && !mail.isEmpty() && !dni.isEmpty() && !telefono.isEmpty()) {
+                ContentValues registro = new ContentValues();
+                registro.put("nombre", nombrePropietario);
+                registro.put("dni", dni);
+                registro.put("telefono", telefono);
+                registro.put("mail", mail);
 
-        if(!nombrePropietario.isEmpty()&&!mail.isEmpty()&&!dni.isEmpty()&&!telefono.isEmpty() ){
-            ContentValues registro = new ContentValues();
-            registro.put("nombre", nombrePropietario);
-            registro.put("dni", dni);
-            registro.put("telefono", telefono);
-            registro.put("mail", mail);
+                long idRegistro = BaseDeDatos.insert("propietarios", null, registro);
 
-            long idRegistro= BaseDeDatos.insert("propietarios",null,registro);
+                BaseDeDatos.close();
+                etNombre.setText("");
+                etTelefono.setText("");
+                etEmail.setText("");
+                etDni.setText("");
 
-            BaseDeDatos.close();
-            etNombre.setText("");
-            etTelefono.setText("");
-            etEmail.setText("");
-            etDni.setText("");
-
-            if(idRegistro!=-1){
-                txtMensaje.setTextColor(Color.parseColor("#3beb10"));
-                txtMensaje.setText("Propietario agregado con exito");
-            }else{
+                if (idRegistro != -1) {
+                    txtMensaje.setTextColor(Color.parseColor("#3beb10"));
+                    txtMensaje.setText("Propietario agregado con exito");
+                } else {
+                    txtMensaje.setTextColor(Color.parseColor("#fa1005"));
+                    txtMensaje.setText("no se pudo agregar");
+                }
+            } else {
                 txtMensaje.setTextColor(Color.parseColor("#fa1005"));
-                txtMensaje.setText("no se pudo agregar");
+                txtMensaje.setText("complete todos los campos");
             }
         }else{
             txtMensaje.setTextColor(Color.parseColor("#fa1005"));
-            txtMensaje.setText("complete todos los campos");
+            txtMensaje.setText("el DNI ya está registrado");
         }
 
+    }
+    public boolean Exist(String dni){
+        boolean exist=false;
+        try{
+            AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"consultorioVeterinario",null,1);
+            SQLiteDatabase baseDeDatos=admin.getWritableDatabase();
+            Cursor cursor=baseDeDatos.rawQuery("SELECT * FROM propietarios where dni=?", new String[]{dni});
+            if(cursor.moveToFirst())
+                exist=true;
 
+        }
+        catch(Exception e){
+            e.printStackTrace();
+
+        }
+        return exist;
     }
 }

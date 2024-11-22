@@ -33,9 +33,13 @@ public class AltaCitaActivity extends AppCompatActivity {
         initVar();
 
         ArrayList<Mascotas> listaMascotas = mostrarMascotas();
-        ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(getApplicationContext(),
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        spinnerMascota.setAdapter(arrayAdapter);
+        if(listaMascotas!=null){
+            ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(getApplicationContext(),
+                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaMascotas);
+            spinnerMascota.setAdapter(arrayAdapter);
+        }
+
+
 
         txtVolver.setOnClickListener(v->volverHome());
         btnGuardarCita.setOnClickListener(view -> guardarCita());

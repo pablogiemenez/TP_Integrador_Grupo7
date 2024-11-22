@@ -3,6 +3,7 @@ package com.example.tp_integrador_grupo7;
 import android.content.ContentValues;
 import android.content.Intent;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -61,32 +62,52 @@ public class AltaVeterinarioActivity extends AppCompatActivity {
         String contrasenia= etContrasenia.getText().toString();
         String telefono= etTelefono.getText().toString();
 
-        if(!nombre.isEmpty()||!mail.isEmpty()||!nombreUsuario.isEmpty()||!contrasenia.isEmpty()){
-            ContentValues registro = new ContentValues();
-            registro.put("nombre", nombre);
-            registro.put("contrasenia", contrasenia);
-            registro.put("telefono", telefono);
-            registro.put("mail", mail);
-            registro.put("nombre_usuario",nombreUsuario);
-            long idRegistro= BaseDeDatos.insert("veterinarios",null,registro);
+        if(!Exist(nombreUsuario,mail)) {
+            if (!nombre.isEmpty() || !mail.isEmpty() || !nombreUsuario.isEmpty() || !contrasenia.isEmpty()) {
+                ContentValues registro = new ContentValues();
+                registro.put("nombre", nombre);
+                registro.put("contrasenia", contrasenia);
+                registro.put("telefono", telefono);
+                registro.put("mail", mail);
+                registro.put("nombre_usuario", nombreUsuario);
+                long idRegistro = BaseDeDatos.insert("veterinarios", null, registro);
 
-            BaseDeDatos.close();
-            etNombre.setText("");
-            etTelefono.setText("");
-            etEmail.setText("");
-            etContrasenia.setText("");
-            etNombreUsuario.setText("");
-            if(idRegistro!=-1){
-                txtMensaje.setTextColor(Color.parseColor("#3beb10"));
-                txtMensaje.setText("Veterinario agregado con exito");
-            }else{
+                BaseDeDatos.close();
+                etNombre.setText("");
+                etTelefono.setText("");
+                etEmail.setText("");
+                etContrasenia.setText("");
+                etNombreUsuario.setText("");
+                if (idRegistro != -1) {
+                    txtMensaje.setTextColor(Color.parseColor("#3beb10"));
+                    txtMensaje.setText("Veterinario agregado con exito");
+                } else {
+                    txtMensaje.setTextColor(Color.parseColor("#fa1005"));
+                    txtMensaje.setText("no se pudo agregar");
+                }
+            } else {
                 txtMensaje.setTextColor(Color.parseColor("#fa1005"));
-                txtMensaje.setText("no se pudo agregar");
+                txtMensaje.setText("complete los campos");
             }
         }else{
             txtMensaje.setTextColor(Color.parseColor("#fa1005"));
-            txtMensaje.setText("complete los campos");
+            txtMensaje.setText("nombre de usuario o mail ya existentes");
         }
+    }
+    public boolean Exist(String nombreUsuario, String email){
+        boolean exist=false;
+        try{
+        AdminSQLiteOpenHelper admin= new AdminSQLiteOpenHelper(this,"consultorioVeterinario",null,1);
+        SQLiteDatabase baseDeDatos=admin.getWritableDatabase();
+        Cursor cursor=baseDeDatos.rawQuery("SELECT * FROM veterinarios where nombre_usuario=? or mail=?", new String[]{nombreUsuario,email});
+        if(cursor.moveToFirst())
+            exist=true;
 
+        }
+        catch(Exception e){
+            e.printStackTrace();
+
+        }
+        return exist;
     }
 }

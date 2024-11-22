@@ -48,6 +48,6 @@ public class Propietarios {
     }
 
     public String toString(){
-        return id + "-" + nombre;
+        return nombre;
     }
 }
