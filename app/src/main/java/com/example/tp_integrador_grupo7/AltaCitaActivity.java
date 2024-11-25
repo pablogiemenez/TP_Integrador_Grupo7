@@ -31,7 +31,8 @@ public class AltaCitaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_cita);
         initVar();
-
+        SessionVeterinario session =(SessionVeterinario) getApplication();
+        idVeterinario = session.getIdSession();
         ArrayList<Mascotas> listaMascotas = mostrarMascotas();
         if(listaMascotas!=null){
             ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(getApplicationContext(),
@@ -64,12 +65,12 @@ public class AltaCitaActivity extends AppCompatActivity {
         ArrayList<Mascotas> listaMascotas = new ArrayList<Mascotas>();
 
         try {
-            Cursor filas = bd.rawQuery("SELECT id, nombre FROM mascotas", null);
+            Cursor filas = bd.rawQuery("SELECT  nombre FROM mascotas", null);
             if(filas.moveToFirst()){
                 do{
                     Mascotas mascotas = new Mascotas();
-                    mascotas.setId(filas.getInt(0));
-                    mascotas.setNombre(filas.getString(1));
+
+                    mascotas.setNombre(filas.getString(0));
                     listaMascotas.add(mascotas);
                 } while (filas.moveToNext());
             } else {
@@ -92,34 +93,38 @@ public class AltaCitaActivity extends AppCompatActivity {
         String nombreMascota = spinnerMascota.getSelectedItem().toString();
 
 
-        if (!fecha.isEmpty() && !motivo.isEmpty() && !nombreMascota.isEmpty()) {
-            int idMascota = buscarIdMascota(nombreMascota);
-            SessionVeterinario session= new SessionVeterinario();
+        try {
+            if (!fecha.isEmpty() && !motivo.isEmpty() && !nombreMascota.isEmpty()) {
+                int idMascota = buscarIdMascota(nombreMascota);
 
-            idVeterinario = session.getIdSession();
 
-            if (idMascota != 0 && idVeterinario!=null) {
-                ContentValues registro = new ContentValues();
-                registro.put("fecha", fecha);
-                registro.put("motivo", motivo);
-                registro.put("id_mascota", idMascota);
-                registro.put("id_veterinario", idVeterinario);
+                Toast.makeText(this, "ID veterinario "+idVeterinario, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "ID mascota "+idMascota, Toast.LENGTH_SHORT).show();
+                if (idMascota != 0 && idVeterinario != null) {
+                    ContentValues registro = new ContentValues();
+                    registro.put("fecha", fecha);
+                    registro.put("motivo", motivo);
+                    registro.put("id_mascota", idMascota);
+                    registro.put("id_veterinario", idVeterinario);
 
-                long idRegistro = BaseDeDatos.insert("citas", null, registro);
+                    long idRegistro = BaseDeDatos.insert("citas", null, registro);
 
-                BaseDeDatos.close();
-                limpiarCampos();
+                    BaseDeDatos.close();
+                    limpiarCampos();
 
-                if (idRegistro != -1) {
-                    Toast.makeText(this, "Cita agregada con éxito", Toast.LENGTH_SHORT).show();
+                    if (idRegistro != -1) {
+                        Toast.makeText(this, "Cita agregada con éxito", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "No se pudo agregar la cita", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(this, "No se pudo agregar la cita", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "No se encontraron IDs de mascota o veterinario", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, "No se encontraron IDs de mascota o veterinario", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show();
+        }catch(Exception e){
+            Toast.makeText(this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -132,10 +137,10 @@ public class AltaCitaActivity extends AppCompatActivity {
 
     public int buscarIdMascota(String nombreMascota) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
-        SQLiteDatabase db = admin.getWritableDatabase();
+        SQLiteDatabase db = admin.getReadableDatabase();
         int id = 0;
 
-        Cursor fila = db.rawQuery("SELECT id_mascota FROM mascotas WHERE nombre = ?", new String[]{nombreMascota});
+        Cursor fila = db.rawQuery("SELECT id FROM mascotas WHERE nombre = ?", new String[]{nombreMascota});
 
         if (fila.moveToFirst()) {
             id = fila.getInt(0);

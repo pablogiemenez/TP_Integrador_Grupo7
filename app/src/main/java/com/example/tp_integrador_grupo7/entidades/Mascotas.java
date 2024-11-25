@@ -59,6 +59,17 @@ public class Mascotas {
     }
 
     public String toString(){
-        return id + "-" + nombre;
+        return nombre;
+    }
+
+    public Mascotas() {
+    }
+
+    public Mascotas(String nombre, String tipo, String raza, Date fecha_nac) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.raza = raza;
+        this.fecha_nac = fecha_nac;
+
     }
 }

@@ -31,5 +31,7 @@
     <string name="btn_veterinarios">Veterinarios</string>
     <string name="btn_configuracion">Configuracion</string>
     <string name="titulo_home">Veterinaria Digital App</string>
+    <string name="proximas_citas">Próximas Citas</string>
+
 
 </resources>

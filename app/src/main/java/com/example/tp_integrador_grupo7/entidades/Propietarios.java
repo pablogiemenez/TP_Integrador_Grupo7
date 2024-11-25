@@ -50,4 +50,14 @@ public class Propietarios {
     public String toString(){
         return nombre;
     }
+
+    public Propietarios() {
+    }
+
+    public Propietarios(String nombre, String telefono, String mail, String dni) {
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.mail = mail;
+        this.dni = dni;
+    }
 }
