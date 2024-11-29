@@ -113,6 +113,29 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
         return listaCitas;
     }
+
+    public ArrayList<String> obtenerListaMascotas() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<String> listaMascotas = new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("SELECT nombre, tipo, raza, fecha_nac FROM mascotas", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String nombre = cursor.getString(0);
+                String tipo = cursor.getString(1);
+                String raza = cursor.getString(2);
+                String fechaNacimiento = cursor.getString(3);
+
+                // Formatea la información de la mascota
+                String infoMascota = "Nombre: " + nombre + ", Tipo: " + tipo + ", Raza: " + raza + ", Nacido: " + fechaNacimiento;
+                listaMascotas.add(infoMascota);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return listaMascotas;
+    }
+
     //public Mascotas(String nombre, String tipo, String raza, java.util.Date fecha_nac)
 
     //public Propietarios(String nombre, String telefono, String mail, String dni)

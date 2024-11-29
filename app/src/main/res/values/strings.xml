@@ -32,6 +32,5 @@
     <string name="btn_configuracion">Configuracion</string>
     <string name="titulo_home">Veterinaria Digital App</string>
     <string name="proximas_citas">Próximas Citas</string>
-
-
+    <string name="mis_mascotas">Mis Mascotas</string>
 </resources>
