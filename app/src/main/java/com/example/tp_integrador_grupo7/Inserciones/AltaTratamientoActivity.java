@@ -7,8 +7,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.datos.DataTratamientos;
+import com.example.tp_integrador_grupo7.entidades.Tratamiento;
 import com.example.tp_integrador_grupo7.R;
 
 public class AltaTratamientoActivity extends AppCompatActivity {
@@ -16,6 +16,7 @@ public class AltaTratamientoActivity extends AppCompatActivity {
     private EditText etMedicamento, etDosis, etDuracion;
     private Spinner spinnerCitas;
     private Button btnGuardarTratamiento;
+    private DataTratamientos dataTratamientos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,9 @@ public class AltaTratamientoActivity extends AppCompatActivity {
         etDuracion = findViewById(R.id.etDuracion);
         spinnerCitas = findViewById(R.id.spinnerCitas);
         btnGuardarTratamiento = findViewById(R.id.btnGuardarTratamiento);
+
+        // Inicializamos DataTratamientos
+        dataTratamientos = new DataTratamientos(this);
 
         // Configuramos el botón Guardar
         btnGuardarTratamiento.setOnClickListener(new View.OnClickListener() {
@@ -51,19 +55,15 @@ public class AltaTratamientoActivity extends AppCompatActivity {
             return;
         }
 
-        // Inserta el tratamiento en la base de datos
-        AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(this, "Veterinaria", null, 1);
-        boolean insertado = dbHelper.insertarTratamiento(medicamento, dosis, duracion, numeroCita);
+        // Crear un objeto Tratamiento
+        Tratamiento tratamiento = new Tratamiento();
+        tratamiento.setNombreMedicamento(medicamento);
+        tratamiento.setDosis(dosis);
+        tratamiento.setDuracion(duracion);
+        tratamiento.setObservaciones("Número de cita: " + numeroCita);
+        tratamiento.setMascotaId(Integer.parseInt(numeroCita)); // Suponiendo que el número de cita es el ID de la mascota
 
-        if (insertado) {
-            Toast.makeText(this, "Tratamiento guardado correctamente", Toast.LENGTH_SHORT).show();
-            // Opcionalmente, puedes limpiar los campos después de guardar
-            etMedicamento.setText("");
-            etDosis.setText("");
-            etDuracion.setText("");
-            spinnerCitas.setSelection(0); // Resetear el Spinner a su primer elemento
-        } else {
-            Toast.makeText(this, "Error al guardar el tratamiento", Toast.LENGTH_SHORT).show();
-        }
+        // Llamar al método para insertar tratamiento
+        dataTratamientos.insertarTratamiento(tratamiento);
     }
 }
