@@ -1,7 +1,6 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.listados;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -14,7 +13,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.tp_integrador_grupo7.entidades.Citas;
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
+import com.example.tp_integrador_grupo7.R;
+import com.example.tp_integrador_grupo7.SessionVeterinario;
 
 import java.util.ArrayList;
 

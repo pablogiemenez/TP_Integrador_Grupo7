@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tp_integrador_grupo7.Inserciones.AltaVeterinarioActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText et_nombreUsuario;

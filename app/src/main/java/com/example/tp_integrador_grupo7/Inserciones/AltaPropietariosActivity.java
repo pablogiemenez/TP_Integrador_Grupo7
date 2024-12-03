@@ -1,4 +1,4 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.Inserciones;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
+import com.example.tp_integrador_grupo7.R;
 
 public class AltaPropietariosActivity extends AppCompatActivity {
     //private Button btnGuardar;

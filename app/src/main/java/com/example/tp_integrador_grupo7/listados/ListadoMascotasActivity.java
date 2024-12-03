@@ -1,4 +1,4 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.listados;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.tp_integrador_grupo7.entidades.Mascotas;
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
+import com.example.tp_integrador_grupo7.R;
 
 import java.util.ArrayList;
 

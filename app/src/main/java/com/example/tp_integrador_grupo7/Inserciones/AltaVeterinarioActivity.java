@@ -1,4 +1,4 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.Inserciones;
 
 import android.content.ContentValues;
 import android.content.Intent;
@@ -16,6 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.LoginActivity;
+import com.example.tp_integrador_grupo7.R;
 
 public class AltaVeterinarioActivity extends AppCompatActivity {
     private EditText etNombre;

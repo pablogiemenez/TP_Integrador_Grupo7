@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AltaPropietariosActivity">
+    tools:context=".Inserciones.AltaPropietariosActivity">
 
     <!-- Imagen de Usuario -->
     <!-- Referencia a la imagen XML de usuario -->

@@ -1,4 +1,4 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.Inserciones;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.R;
 
 public class AltaTratamientoActivity extends AppCompatActivity {
 

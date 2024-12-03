@@ -9,6 +9,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tp_integrador_grupo7.Inserciones.AltaCitaActivity;
+import com.example.tp_integrador_grupo7.Inserciones.AltaMascotaActivity;
+import com.example.tp_integrador_grupo7.Inserciones.AltaPropietariosActivity;
+import com.example.tp_integrador_grupo7.Inserciones.AltaTratamientoActivity;
+import com.example.tp_integrador_grupo7.listados.ListadoCitasActivity;
+import com.example.tp_integrador_grupo7.listados.ListadoMascotasActivity;
+
 public class Home extends AppCompatActivity {
 
     private TextView textViewUsuario, txtCerrarSesion,txtIdUsuario;
@@ -57,18 +64,18 @@ public class Home extends AppCompatActivity {
             txtIdUsuario.setText("ID no encontrado");
         }
         btnPropietarios.setOnClickListener(v->{
-            Intent i= new Intent(this,AltaPropietariosActivity.class);
+            Intent i= new Intent(this, AltaPropietariosActivity.class);
             startActivity(i);
         });
 
          //Configurar las acciones de los botones
         btnCitas.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, AltaCitaActivity.class);
+            Intent intent = new Intent(Home.this, ListadoCitasActivity.class);
             startActivity(intent);
         });
 
         btnMascotas.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, AltaMascotaActivity.class);
+            Intent intent = new Intent(Home.this, ListadoMascotasActivity.class);
             startActivity(intent);
         });
 
@@ -77,7 +84,7 @@ public class Home extends AppCompatActivity {
             startActivity(intent);
         });
         btnProximasCitas.setOnClickListener(v->{
-            Intent i=new Intent(this,ListadoCitasActivity.class);
+            Intent i=new Intent(this, ListadoCitasActivity.class);
             startActivity(i);
         });
         /*btnReportesMedicos.setOnClickListener(v -> {

@@ -1,4 +1,4 @@
-package com.example.tp_integrador_grupo7;
+package com.example.tp_integrador_grupo7.Inserciones;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.R;
 import com.example.tp_integrador_grupo7.entidades.Propietarios;
 
 import java.util.ArrayList;
