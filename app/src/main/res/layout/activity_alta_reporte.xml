@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/twIdcita"
         android:layout_width="87dp"
         android:layout_height="26dp"
         android:layout_marginStart="36dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/etIdcita"
         android:layout_width="328dp"
         android:layout_height="41dp"
         android:layout_marginStart="36dp"
@@ -25,10 +25,10 @@
         android:inputType="text"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+        app:layout_constraintTop_toBottomOf="@+id/twIdcita" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/twDiagnostico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -36,10 +36,10 @@
         android:text="Diagnostico"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintTop_toBottomOf="@+id/etIdcita" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/etDiagnostico"
         android:layout_width="327dp"
         android:layout_height="45dp"
         android:layout_marginStart="36dp"
@@ -47,10 +47,10 @@
         android:inputType="text"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/twDiagnostico" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/twHallazgos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -58,10 +58,10 @@
         android:text="Hallazgos"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+        app:layout_constraintTop_toBottomOf="@+id/etDiagnostico" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/etHallazgos"
         android:layout_width="328dp"
         android:layout_height="42dp"
         android:layout_marginStart="36dp"
@@ -69,10 +69,10 @@
         android:inputType="text"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/twHallazgos" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/twFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -80,10 +80,10 @@
         android:text="@string/fecha"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+        app:layout_constraintTop_toBottomOf="@+id/etHallazgos" />
 
     <EditText
-        android:id="@+id/editTextText4"
+        android:id="@+id/etfecha"
         android:layout_width="326dp"
         android:layout_height="41dp"
         android:layout_marginStart="36dp"
@@ -91,15 +91,15 @@
         android:inputType="text"
         android:text="Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/twFecha" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSave"
         android:layout_width="143dp"
         android:layout_height="58dp"
         android:layout_marginTop="72dp"
         android:text="Guardar"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText4"
+        app:layout_constraintTop_toBottomOf="@+id/etfecha"
         tools:layout_editor_absoluteX="134dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
