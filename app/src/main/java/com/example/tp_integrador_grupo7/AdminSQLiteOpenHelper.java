@@ -29,8 +29,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 "nombre TEXT NOT NULL, mail TEXT NOT NULL, telefono TEXT NOT NULL, dni TEXT NOT NULL)");
 
         // Crear la tabla de tratamientos
-        sqLiteDatabase.execSQL("CREATE TABLE tratamientos (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "medicamento TEXT NOT NULL, dosis TEXT NOT NULL, duracion TEXT NOT NULL, numero_cita TEXT NOT NULL)");
+       /* sqLiteDatabase.execSQL("CREATE TABLE tratamientos (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "medicamento TEXT NOT NULL, dosis TEXT NOT NULL, duracion TEXT NOT NULL, numero_cita TEXT NOT NULL)");*/
 
         sqLiteDatabase.execSQL("CREATE TABLE mascotas (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "nombre TEXT NOT NULL, tipo TEXT NOT NULL, raza TEXT NOT NULL, fecha_nac TEXT NOT NULL, foto BLOB, idPropietario INTEGER NOT NULL" +

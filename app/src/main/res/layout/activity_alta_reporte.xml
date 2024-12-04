@@ -16,27 +16,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etIdcita"
-        android:layout_width="328dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="36dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/twIdcita" />
-
     <TextView
         android:id="@+id/twDiagnostico"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:text="Diagnostico"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etIdcita" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerIdCita" />
 
     <EditText
         android:id="@+id/etDiagnostico"
@@ -101,5 +90,13 @@
         android:text="Guardar"
         app:layout_constraintTop_toBottomOf="@+id/etfecha"
         tools:layout_editor_absoluteX="134dp" />
+
+    <Spinner
+        android:id="@+id/spinnerIdCita"
+        android:layout_width="325dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twIdcita" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,13 @@
 package com.example.tp_integrador_grupo7.entidades;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Reporte {
     private int id;
     private int idCita;
     private String diagnostico;
     private String hallazgos;
-    private Date fecha;
+    private String fecha;
 
     public Reporte(){}
 
@@ -43,11 +43,11 @@ public class Reporte {
         this.hallazgos = hallazgos;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }
