@@ -48,7 +48,7 @@ public class Propietarios {
     }
 
     public String toString(){
-        return nombre;
+        return "Nombre: "+ nombre+", Mail: "+mail+", Telefono: "+telefono+", DNI: "+dni;
     }
 
     public Propietarios() {
@@ -60,4 +60,5 @@ public class Propietarios {
         this.mail = mail;
         this.dni = dni;
     }
+
 }

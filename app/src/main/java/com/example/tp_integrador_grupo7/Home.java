@@ -15,6 +15,7 @@ import com.example.tp_integrador_grupo7.Inserciones.AltaPropietariosActivity;
 import com.example.tp_integrador_grupo7.Inserciones.AltaTratamientoActivity;
 import com.example.tp_integrador_grupo7.listados.ListadoCitasActivity;
 import com.example.tp_integrador_grupo7.listados.ListadoMascotasActivity;
+import com.example.tp_integrador_grupo7.listados.ListadoPropietariosActivity;
 
 public class Home extends AppCompatActivity {
 
@@ -64,7 +65,7 @@ public class Home extends AppCompatActivity {
             txtIdUsuario.setText("ID no encontrado");
         }
         btnPropietarios.setOnClickListener(v->{
-            Intent i= new Intent(this, AltaPropietariosActivity.class);
+            Intent i= new Intent(this, ListadoPropietariosActivity.class);
             startActivity(i);
         });
 

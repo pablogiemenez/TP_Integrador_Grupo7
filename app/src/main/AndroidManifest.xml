@@ -16,6 +16,9 @@
         <activity
             android:name=".listados.ListadoCitasActivity"
             android:exported="false" />
+        <activity android:name=".listados.ListadoMascotasActivity" />
+        <activity
+            android:name=".listados.ListadoPropietariosActivity" />
         <activity
             android:name=".Inserciones.AltaCitaActivity"
             android:exported="false" />

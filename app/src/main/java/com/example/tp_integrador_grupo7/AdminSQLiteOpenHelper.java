@@ -135,6 +135,22 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.close();
         return listaMascotas;
     }
+    public ArrayList<Propietarios> obtenerListaPropietarios(){
+        SQLiteDatabase baseDeDatos= this.getReadableDatabase();
+        Cursor fila= baseDeDatos.rawQuery("SELECT nombre, mail, dni, telefono FROM propietarios", null);
+        ArrayList<Propietarios> listaPropietarios= new ArrayList<>();
+        if(fila.moveToFirst()){
+            do{
+                String nombre=fila.getString(0);
+                String mail=fila.getString(1);
+                String dni=fila.getString(2);
+                String tel=fila.getString(3);
+                listaPropietarios.add(new Propietarios(nombre,tel,mail,dni));
+
+            }while(fila.moveToNext());
+        }
+        return listaPropietarios;
+    }
 
     //public Mascotas(String nombre, String tipo, String raza, java.util.Date fecha_nac)
 

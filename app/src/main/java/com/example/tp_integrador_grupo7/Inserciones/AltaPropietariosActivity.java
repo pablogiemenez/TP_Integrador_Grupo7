@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
 import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.R;
+import com.example.tp_integrador_grupo7.listados.ListadoPropietariosActivity;
 
 public class AltaPropietariosActivity extends AppCompatActivity {
     //private Button btnGuardar;
@@ -35,7 +36,7 @@ public class AltaPropietariosActivity extends AppCompatActivity {
             TextView txtVolver = findViewById(R.id.txt_volver);
 
             txtVolver.setOnClickListener(v -> {
-                Intent i = new Intent(this, Home.class);
+                Intent i = new Intent(this, ListadoPropietariosActivity.class);
                 startActivity(i);
 
             });

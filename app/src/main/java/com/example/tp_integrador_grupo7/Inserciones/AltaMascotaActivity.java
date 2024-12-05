@@ -31,8 +31,8 @@ public class AltaMascotaActivity extends AppCompatActivity {
        setContentView(R.layout.activity_alta_mascota);
        innitVar();
 
-       ArrayList<Propietarios> listaPropietarios = mostrarPropietarios();
-       ArrayAdapter<Propietarios> arrayAdapter = new ArrayAdapter<Propietarios>(getApplicationContext(),
+       ArrayList<String> listaPropietarios = mostrarPropietarios();
+       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaPropietarios);
 
        spinnerDuenio.setAdapter(arrayAdapter);
@@ -53,19 +53,19 @@ public class AltaMascotaActivity extends AppCompatActivity {
        txtMensaje=findViewById(R.id.txt_mensaje_alta_mascota);
    }
 
-   private ArrayList<Propietarios> mostrarPropietarios(){
+   private ArrayList<String> mostrarPropietarios(){
        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
        SQLiteDatabase bd = admin.getWritableDatabase();
-       ArrayList<Propietarios> listaPropietarios = new ArrayList<Propietarios>();
+       ArrayList<String> listaPropietarios = new ArrayList<String>();
 
        try {
            Cursor filas = bd.rawQuery("SELECT  nombre FROM propietarios", null);
            if(filas.moveToFirst()){
                do{
-                   Propietarios prop = new Propietarios();
+
                    //prop.setId(filas.getInt(0));
-                   prop.setNombre(filas.getString(0));
-                   listaPropietarios.add(prop);
+
+                   listaPropietarios.add(filas.getString(0));
                } while (filas.moveToNext());
            } else {
                return null;
