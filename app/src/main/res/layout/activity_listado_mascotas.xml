@@ -62,9 +62,10 @@
         android:id="@+id/btn_nuevo_registro_mascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="12dp"
         android:text="@string/nuevo_registro"
-        app:layout_constraintTop_toBottomOf="@+id/textView_title_mascotas"
-        tools:layout_editor_absoluteX="37dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title_mascotas" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

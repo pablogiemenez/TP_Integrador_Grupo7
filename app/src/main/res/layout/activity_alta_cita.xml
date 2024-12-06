@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:text="@string/nueva_cita"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -74,9 +74,9 @@
 
     <Spinner
         android:id="@+id/spinnerMascota"
-        android:layout_width="320dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="314dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 

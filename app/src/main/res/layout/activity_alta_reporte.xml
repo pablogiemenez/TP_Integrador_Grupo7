@@ -11,7 +11,7 @@
         android:layout_height="26dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="68dp"
-        android:text="Id Cita"
+        android:text="@string/id_cita"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="24dp"
-        android:text="Diagnostico"
+        android:text="@string/diagnostico"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerIdCita" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="36dp"
-        android:text="Hallazgos"
+        android:text="@string/hallazgos"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDiagnostico" />
@@ -87,7 +87,7 @@
         android:layout_width="143dp"
         android:layout_height="58dp"
         android:layout_marginTop="72dp"
-        android:text="Guardar"
+        android:text="@string/btn_guardar"
         app:layout_constraintTop_toBottomOf="@+id/etfecha"
         tools:layout_editor_absoluteX="134dp" />
 

@@ -40,7 +40,7 @@ public class DataTratamientos {
                 pst.setString(2, tratamiento.getDosis());
                 pst.setString(3, tratamiento.getDuracion());
                 pst.setString(4, tratamiento.getObservaciones());
-                pst.setInt(5, tratamiento.getMascotaId());
+                pst.setInt(5, tratamiento.getcitaId());
 
                 // Ejecutar la consulta
                 pst.executeUpdate();

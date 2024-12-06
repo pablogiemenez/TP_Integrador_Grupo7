@@ -6,7 +6,7 @@ public class Tratamiento {
     private String dosis;
     private String duracion;
     private String observaciones;
-    private int mascotaId;
+    private int citaId;
 
     // Getters y setters
     public int getId() {
@@ -49,11 +49,11 @@ public class Tratamiento {
         this.observaciones = observaciones;
     }
 
-    public int getMascotaId() {
-        return mascotaId;
+    public int getcitaId() {
+        return citaId;
     }
 
     public void setMascotaId(int mascotaId) {
-        this.mascotaId = mascotaId;
+        this.citaId = mascotaId;
     }
 }

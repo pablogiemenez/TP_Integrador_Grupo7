@@ -17,13 +17,11 @@
             android:name=".DetallePropietarioActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".listados.ListadoCitasActivity"
             android:exported="false" />
         <activity android:name=".listados.ListadoMascotasActivity" />
         <activity android:name=".listados.ListadoPropietariosActivity" />
+        <activity android:name=".listados.ListadoReportesActivity"/>
         <activity
             android:name=".Inserciones.AltaCitaActivity"
             android:exported="false" />

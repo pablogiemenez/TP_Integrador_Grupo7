@@ -8,27 +8,28 @@
     tools:context=".Home">
 
     <!-- Texto del Usuario -->
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Usuario: xxxxxxx"
-        android:textColor="#333333"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/txt_IdUsuario"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Título principal -->
 
     <!-- Botón de Citas -->
 
     <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
+        android:text="Usuario: xxxxxxx"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="16dp"
         android:text="@string/titulo_home"
         android:textColor="#333333"
@@ -36,7 +37,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/btnCitas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView9" />
 
@@ -133,35 +134,25 @@
         android:id="@+id/txt_cerrarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="92dp"
         android:text="@string/cerrar_sesion"
         android:textColor="@color/blue_link"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_proximas_citas" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_propietarios" />
 
     <TextView
         android:id="@+id/txt_IdUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="124dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="116dp"
         android:text="ID: xxxxxxxx"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_proximas_citas"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#6200EE"
-        android:text="@string/proximas_citas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_propietarios" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,11 +31,12 @@
         android:id="@+id/tvDosis"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="48dp"
         android:text="Dosis (1 cada:)"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/etMedicamento"
-        tools:layout_editor_absoluteX="36dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMedicamento" />
 
     <EditText
         android:id="@+id/etDosis"
@@ -52,11 +53,12 @@
         android:id="@+id/tvDuracion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="48dp"
         android:text="Duracion"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/etDosis"
-        tools:layout_editor_absoluteX="36dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDosis" />
 
     <EditText
         android:id="@+id/etDuracion"

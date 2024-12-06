@@ -13,14 +13,16 @@ import com.example.tp_integrador_grupo7.Inserciones.AltaCitaActivity;
 import com.example.tp_integrador_grupo7.Inserciones.AltaMascotaActivity;
 import com.example.tp_integrador_grupo7.Inserciones.AltaPropietariosActivity;
 import com.example.tp_integrador_grupo7.Inserciones.AltaTratamientoActivity;
+import com.example.tp_integrador_grupo7.Inserciones.AltaVeterinarioActivity;
 import com.example.tp_integrador_grupo7.listados.ListadoCitasActivity;
 import com.example.tp_integrador_grupo7.listados.ListadoMascotasActivity;
 import com.example.tp_integrador_grupo7.listados.ListadoPropietariosActivity;
+import com.example.tp_integrador_grupo7.listados.ListadoReportesActivity;
 
 public class Home extends AppCompatActivity {
 
     private TextView textViewUsuario, txtCerrarSesion,txtIdUsuario;
-    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion, btnPropietarios,btnProximasCitas;
+    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion, btnPropietarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,6 @@ public class Home extends AppCompatActivity {
         btnVeterinarios = findViewById(R.id.button9);
         btnConfiguracion = findViewById(R.id.button10);
         btnPropietarios=findViewById(R.id.btn_propietarios);
-        btnProximasCitas=findViewById(R.id.btn_proximas_citas);
 
         // Configurar el nombre de usuario
         SessionVeterinario session= (SessionVeterinario) getApplicationContext();
@@ -84,17 +85,13 @@ public class Home extends AppCompatActivity {
             Intent intent = new Intent(Home.this, AltaTratamientoActivity.class);
             startActivity(intent);
         });
-        btnProximasCitas.setOnClickListener(v->{
-            Intent i=new Intent(this, ListadoCitasActivity.class);
-            startActivity(i);
-        });
-        /*btnReportesMedicos.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, ReportesMedicosActivity.class);
+        btnReportesMedicos.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, ListadoReportesActivity.class);
             startActivity(intent);
         });
 
-        btnVeterinarios.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, VeterinariosActivity.class);
+       /* btnVeterinarios.setOnClickListener(v -> {
+            Intent intent = new Intent(Home.this, AltaVeterinarioActivity.class);
             startActivity(intent);
         });
 

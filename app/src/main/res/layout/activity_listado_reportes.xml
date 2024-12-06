@@ -2,41 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".listados.ListadoCitasActivity">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvProximasCitas"
+        android:id="@+id/tvReportesMedicos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/proximas_citas"
+        android:layout_marginTop="56dp"
+        android:text="Reportes medicos"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnNuevaCita"
+        android:id="@+id/btnAggReporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/nueva_cita"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="8dp"
+        android:text="Nuevo reporte"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProximasCitas" />
+        app:layout_constraintTop_toBottomOf="@+id/tvReportesMedicos" />
 
     <ListView
-        android:id="@+id/lvCitas"
-        android:layout_width="409dp"
-        android:layout_height="580dp"
-        android:layout_marginTop="1dp"
+        android:id="@+id/lvReportes"
+        android:layout_width="407dp"
+        android:layout_height="564dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNuevaCita" />
-
+        app:layout_constraintTop_toBottomOf="@+id/btnAggReporte"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

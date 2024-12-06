@@ -72,6 +72,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.close();
         return resultado != -1; // Devuelve true si la inserción fue exitosa
     }
+
     public ArrayList<String> obtenerListaCitasXIdVeterinario(Integer id){
         SQLiteDatabase BaseDeDatos=this.getReadableDatabase();
 

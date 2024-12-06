@@ -1,40 +1,54 @@
 <resources>
     <string name="app_name">Veterinaria Digital</string>
-    <string name="inicio_sesion">Inicio de Sesion</string>
-    <string name="nombre_usuario">nombre de usuario</string>
-    <string name="contrasenia">contraseña</string>
-    <string name="btn_inicio_sesion">Iniciar sesion</string>
-    <string name="registro_veterinario">Registro Veterinario</string>
-    <string name="nombre">nombre</string>
-    <string name="ejemplo_nombre"> ej: Carlos</string>
-    <string name="telefono">telefono</string>
-    <string name="mail">mail</string>
-    <string name="ejemplo_mail">ej: carlos@gmail.com</string>
-    <string name="ejemplo_nombre_usuario">ej: Carlos123</string>
-    <string name="registrar">registrar</string>
-    <string name="volver">volver</string>
+    <string name="titulo_home">Veterinaria Digital App</string>
+
+    <string name="Nombre">Nombre</string>
+    <string name="mail">Mail</string>
+    <string name="fecha">Fecha</string>
+    <string name="Telefono">Telefono</string>
+    <string name="nombre_usuario">Nombre de usuario</string>
+    <string name="registrar">Registrar</string>
+    <string name="contrasenia">Contraseña</string>
+    <string name="fecha_nacimiento">Fecha de Nacimiento</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="motivo">Motivo</string>
+    <string name="volver">Volver</string>
     <string name="propietarios">Propietarios</string>
     <string name="dni">Nro documento</string>
-    <string name="nuevo_registro">Nuevo registro</string>
-    <string name="nueva_cita">Nueva cita</string>
-    <string name="fecha">fecha</string>
-    <string name="horario">horario</string>
-    <string name="motivo">motivo</string>
-    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="horario">Horario</string>
     <string name="informe">Informe</string>
-    <string name="mascota">mascota</string>
-    <string name="agregar_cita">Agregar Cita</string>
+    <string name="mascota">Mascota</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="tipo">Tipo</string>
+    <string name="raza">Raza</string>
+    <string name="dueño">Dueño</string>
+    <string name="id_cita">ID de Cita</string>
+    <string name="diagnostico">Diagnostico</string>
+    <string name="hallazgos">Hallazgos</string>
+
     <string name="btn_citas">Citas</string>
     <string name="btn_mascotas">Mascotas</string>
     <string name="btn_tratamientos">Tratamientos</string>
     <string name="btn_reportes_medicos">Reportes Medicos</string>
     <string name="btn_veterinarios">Veterinarios</string>
     <string name="btn_configuracion">Configuracion</string>
-    <string name="titulo_home">Veterinaria Digital App</string>
+    <string name="btn_inicio_sesion">Iniciar sesion</string>
+    <string name="btn_guardar">Guardar</string>
+
+    <string name="inicio_sesion">Inicio de Sesion</string>
+
+    <string name="ejemplo_nombre">Ej: Carlos</string>
+    <string name="ejemplo_mail">Ej: carlos@gmail.com</string>
+    <string name="ejemplo_nombre_usuario">Ej: Carlos123</string>
+    <string name="Ejemplo_tel">Ej: 1155667788</string>
+
+    <string name="registro_veterinario">Registro Veterinario</string>
+    <string name="nuevo_registro">Nuevo registro</string>
+    <string name="nueva_cita">Nueva cita</string>
+    <string name="agregar_cita">Agregar Cita</string>
     <string name="proximas_citas">Próximas Citas</string>
     <string name="mis_mascotas">Mis Mascotas</string>
     <string name="lista_propietarios">Lista de Propietarios</string>
     <string name="propietario_sel">Propietario seleccionado</string>
-    <string name="eliminar">eliminar</string>
 
 </resources>
