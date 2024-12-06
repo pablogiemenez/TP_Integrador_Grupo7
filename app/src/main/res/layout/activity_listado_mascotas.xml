@@ -11,21 +11,21 @@
         android:id="@+id/textView_title_mascotas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:text="@string/mis_mascotas"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_volver_listado_mascotas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_title_mascotas"
-        app:layout_constraintBottom_toTopOf="@+id/txt_volver_listado_mascotas">
+        app:layout_constraintTop_toBottomOf="@+id/btn_nuevo_registro_mascota">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,5 +57,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_nuevo_registro_mascota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/nuevo_registro"
+        app:layout_constraintTop_toBottomOf="@+id/textView_title_mascotas"
+        tools:layout_editor_absoluteX="37dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,8 @@ package com.example.tp_integrador_grupo7.listados;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.DetallePropietarioActivity;
 import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.Inserciones.AltaPropietariosActivity;
 import com.example.tp_integrador_grupo7.R;
@@ -24,6 +27,7 @@ public class ListadoPropietariosActivity extends AppCompatActivity {
     private ListView lvPropietarios;
     private TextView txtVolver;
     private Button btnNuevoRegistro;
+    ArrayList<Propietarios> listaPropietarios;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,12 +45,19 @@ public class ListadoPropietariosActivity extends AppCompatActivity {
             startActivity(i);
         });
         setLvPropietarios();
+        lvPropietarios.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id)->{
+            Intent i = new Intent(this, DetallePropietarioActivity.class);
+            Propietarios prop= listaPropietarios.get(position);
+            i.putExtra("propietario",prop);
+            startActivity(i);
+
+        });
 
     }
     public void setLvPropietarios(){
         try {
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
-            ArrayList<Propietarios> listaPropietarios = admin.obtenerListaPropietarios();
+            listaPropietarios = admin.obtenerListaPropietarios();
             if (!listaPropietarios.isEmpty()) {
                 ArrayAdapter<Propietarios> adap = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaPropietarios);
                 lvPropietarios.setAdapter(adap);

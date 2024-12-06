@@ -3,6 +3,7 @@ package com.example.tp_integrador_grupo7.listados;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
 import com.example.tp_integrador_grupo7.Home;
+import com.example.tp_integrador_grupo7.Inserciones.AltaMascotaActivity;
 import com.example.tp_integrador_grupo7.R;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 public class ListadoMascotasActivity extends AppCompatActivity {
     private TextView txtVolver, txtMensaje;
     private ListView lvMascotas;
+    private Button btnNuevoRegistro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class ListadoMascotasActivity extends AppCompatActivity {
         });
         initVars();
         txtVolver.setOnClickListener(v -> volverHome());
+        btnNuevoRegistro.setOnClickListener(v->irAltaMascota());
         setLvMascotas();
     }
 
@@ -42,8 +46,12 @@ public class ListadoMascotasActivity extends AppCompatActivity {
         txtVolver = findViewById(R.id.txt_volver_listado_mascotas);
         lvMascotas = findViewById(R.id.lv_mascotas);
         txtMensaje = findViewById(R.id.txt_mensaje_proximas_mascotas);
+        btnNuevoRegistro=findViewById(R.id.btn_nuevo_registro_mascota);
     }
-
+    public void irAltaMascota(){
+        Intent i= new Intent(this, AltaMascotaActivity.class);
+        startActivity(i);
+    }
     public void volverHome() {
         Intent i = new Intent(this, Home.class);
         startActivity(i);

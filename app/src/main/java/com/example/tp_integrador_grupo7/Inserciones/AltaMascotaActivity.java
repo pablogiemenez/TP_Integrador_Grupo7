@@ -32,10 +32,13 @@ public class AltaMascotaActivity extends AppCompatActivity {
        innitVar();
 
        ArrayList<String> listaPropietarios = mostrarPropietarios();
-       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
-               androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaPropietarios);
+       if(listaPropietarios!=null){
+           ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                   androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaPropietarios);
+           spinnerDuenio.setAdapter(arrayAdapter);
 
-       spinnerDuenio.setAdapter(arrayAdapter);
+       }
+;
 
 
        btnGuardar.setOnClickListener(view -> {
@@ -89,7 +92,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
        String duenio = spinnerDuenio.getSelectedItem().toString();
 
        try {
-           if (!nombre.isEmpty() && !nacimiento.isEmpty() && !tipo.isEmpty() && !raza.isEmpty() && !duenio.isEmpty()) {
+           if (!nombre.isEmpty() || !nacimiento.isEmpty() || !tipo.isEmpty() || !raza.isEmpty() || !duenio.isEmpty()) {
                ContentValues registro = new ContentValues();
                registro.put("nombre", nombre);
                registro.put("fecha_nac", nacimiento);
@@ -117,7 +120,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
 
                }
            } else {
-               Toast.makeText(this, "Complete los campos", Toast.LENGTH_SHORT).show();
+               //Toast.makeText(this, "Complete los campos", Toast.LENGTH_SHORT).show();
                txtMensaje.setTextColor(Color.parseColor("#fa1005"));
                txtMensaje.setText("Complete los campos");
            }

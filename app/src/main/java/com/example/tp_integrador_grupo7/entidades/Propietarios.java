@@ -1,6 +1,8 @@
 package com.example.tp_integrador_grupo7.entidades;
 
-public class Propietarios {
+import java.io.Serializable;
+
+public class Propietarios implements Serializable {
     private int id;
     private String nombre;
     private String telefono;

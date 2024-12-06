@@ -137,7 +137,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     }
     public ArrayList<Propietarios> obtenerListaPropietarios(){
         SQLiteDatabase baseDeDatos= this.getReadableDatabase();
-        Cursor fila= baseDeDatos.rawQuery("SELECT nombre, mail, dni, telefono FROM propietarios", null);
+        Cursor fila= baseDeDatos.rawQuery("SELECT nombre, mail, dni, telefono,id FROM propietarios", null);
         ArrayList<Propietarios> listaPropietarios= new ArrayList<>();
         if(fila.moveToFirst()){
             do{
@@ -145,7 +145,10 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
                 String mail=fila.getString(1);
                 String dni=fila.getString(2);
                 String tel=fila.getString(3);
-                listaPropietarios.add(new Propietarios(nombre,tel,mail,dni));
+                Integer id=fila.getInt(4);
+                Propietarios prop= new Propietarios(nombre,tel,mail,dni);
+                prop.setId(id);
+                listaPropietarios.add(prop);
 
             }while(fila.moveToNext());
         }
