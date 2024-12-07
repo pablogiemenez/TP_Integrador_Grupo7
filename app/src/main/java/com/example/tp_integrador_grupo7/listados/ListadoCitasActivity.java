@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.Inserciones.AltaCitaActivity;
 import com.example.tp_integrador_grupo7.Inserciones.AltaMascotaActivity;
 import com.example.tp_integrador_grupo7.R;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 public class ListadoCitasActivity extends AppCompatActivity {
     private ListView lvCitas;
     private Button btnNuevaCita;
+    private TextView txtVolver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,23 +39,24 @@ public class ListadoCitasActivity extends AppCompatActivity {
         });
         initVars();
         setLvCitas();
+        txtVolver.setOnClickListener(v->volverHome());
         btnNuevaCita.setOnClickListener(view -> {
             Intent i= new Intent(this, AltaCitaActivity.class);
             startActivity(i);
         });
     }
     public void initVars(){
-        //txtVolver=findViewById(R.id.txt_volver_listado_citas);
+        txtVolver=findViewById(R.id.txt_volver_listado_citas);
         btnNuevaCita = findViewById(R.id.btnNuevaCita);
         lvCitas=findViewById(R.id.lvCitas);
         //txtMensaje=findViewById(R.id.txt_mensaje_proximas_citas);
 
     }
-    /*public void volverHome(){
+    public void volverHome(){
         Intent i= new Intent(this, Home.class);
         startActivity(i);
 
-    }*/
+    }
 
     public void setLvCitas(){
         try{

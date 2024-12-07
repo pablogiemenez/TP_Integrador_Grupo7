@@ -19,6 +19,7 @@ import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.R;
 import com.example.tp_integrador_grupo7.SessionVeterinario;
 import com.example.tp_integrador_grupo7.entidades.Mascotas;
+import com.example.tp_integrador_grupo7.listados.ListadoCitasActivity;
 
 import java.util.ArrayList;
 
@@ -49,7 +50,7 @@ public class AltaCitaActivity extends AppCompatActivity {
     }
 
     private void volverHome(){
-        Intent i= new Intent(this, Home.class);
+        Intent i= new Intent(this, ListadoCitasActivity.class);
         startActivity(i);
     }
 

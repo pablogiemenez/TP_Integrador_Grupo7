@@ -1,5 +1,6 @@
 package com.example.tp_integrador_grupo7.Inserciones;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,19 +16,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.R;
 import com.example.tp_integrador_grupo7.datos.DataReportes;
 import com.example.tp_integrador_grupo7.datos.DataTratamientos;
 import com.example.tp_integrador_grupo7.entidades.Citas;
 import com.example.tp_integrador_grupo7.entidades.Propietarios;
 import com.example.tp_integrador_grupo7.entidades.Reporte;
+import com.example.tp_integrador_grupo7.listados.ListadoReportesActivity;
 
 import java.sql.Date;
 import java.util.ArrayList;
 
 public class AltaReporteActivity extends AppCompatActivity {
     private EditText etDiagnostico, etHallazgos, etfecha;
-    private TextView twIdcita, twDiagnostico, twHallazgos, twFecha;
+    private TextView twIdcita, twDiagnostico, twHallazgos, twFecha, txtVolver;
     private Button btnSave;
     private Spinner spinnerIdCita;
     private DataReportes data = new DataReportes(this);
@@ -36,7 +39,7 @@ public class AltaReporteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alta_reporte);
         innitVars();
-
+        txtVolver.setOnClickListener(v->volver());
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {guardarReportes();}
@@ -49,7 +52,11 @@ public class AltaReporteActivity extends AppCompatActivity {
             spinnerIdCita.setAdapter(arrayAdapter);
         }
     }
+    public void volver(){
+        Intent i= new Intent(this, ListadoReportesActivity.class);
+        startActivity(i);
 
+    }
     private void guardarReportes(){
     Reporte rep = new Reporte();
     rep.setDiagnostico(etDiagnostico.getText().toString());
@@ -73,6 +80,7 @@ public class AltaReporteActivity extends AppCompatActivity {
         twDiagnostico = findViewById(R.id.twDiagnostico);
         twHallazgos = findViewById(R.id.twFecha);
         btnSave = findViewById(R.id.btnSave);
+        txtVolver= findViewById(R.id.txt_volver_alta_reporte);
     }
 
     public ArrayList<Citas> mostrarCitas(){

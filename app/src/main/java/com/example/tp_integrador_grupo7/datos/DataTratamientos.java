@@ -13,9 +13,9 @@ import java.sql.PreparedStatement;
 import com.example.tp_integrador_grupo7.entidades.Tratamiento;
 
 public class DataTratamientos {
-    private static final String URL = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10748679";
-    private static final String USER = "sql10748679";
-    private static final String PASSWORD = "2WA7RsMaaK";
+    private static final String URL = "jdbc:mysql://sql10.freesqldatabase.com:3306/sql10750432";
+    private static final String USER = "sql10750432";
+    private static final String PASSWORD = "F16UCnM3KU";
 
     private Context context;
 

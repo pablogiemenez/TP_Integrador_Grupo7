@@ -1,5 +1,6 @@
 package com.example.tp_integrador_grupo7.Inserciones;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -7,10 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.datos.DataTratamientos;
 import com.example.tp_integrador_grupo7.entidades.Tratamiento;
 import com.example.tp_integrador_grupo7.R;
@@ -23,6 +26,7 @@ public class AltaTratamientoActivity extends AppCompatActivity {
     private Spinner spinnerCitas;
     private Button btnGuardarTratamiento;
     private DataTratamientos dataTratamientos;
+    private TextView txtVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class AltaTratamientoActivity extends AppCompatActivity {
         etDuracion = findViewById(R.id.etDuracion);
         spinnerCitas = findViewById(R.id.spinnerCitas);
         btnGuardarTratamiento = findViewById(R.id.btnGuardarTratamiento);
+        txtVolver=findViewById(R.id.txt_volver_alta_tratamiento);
 
         // Inicializamos DataTratamientos
         dataTratamientos = new DataTratamientos(this);
@@ -74,7 +79,10 @@ public class AltaTratamientoActivity extends AppCompatActivity {
         // Llamar al método para insertar tratamiento
         dataTratamientos.insertarTratamiento(tratamiento);
     }
-
+    private void volverHome(){
+        Intent i= new Intent(this, Home.class);
+        startActivity(i);
+    }
     private ArrayList<String> mostrarCitas(){
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();

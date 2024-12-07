@@ -1,6 +1,7 @@
 package com.example.tp_integrador_grupo7.Inserciones;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -15,8 +16,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+import com.example.tp_integrador_grupo7.Home;
 import com.example.tp_integrador_grupo7.R;
 import com.example.tp_integrador_grupo7.entidades.Propietarios;
+import com.example.tp_integrador_grupo7.listados.ListadoMascotasActivity;
 
 import java.util.ArrayList;
 
@@ -24,7 +27,8 @@ public class AltaMascotaActivity extends AppCompatActivity {
     private EditText etNombre, etNacimiento, etTipo, etRaza;
     private Spinner spinnerDuenio;
     private Button btnGuardar;
-    private TextView txtMensaje;
+    private TextView txtMensaje, txtVolver;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
@@ -39,7 +43,7 @@ public class AltaMascotaActivity extends AppCompatActivity {
 
        }
 ;
-
+        txtVolver.setOnClickListener(v->volver());
 
        btnGuardar.setOnClickListener(view -> {
            guardarMascota();
@@ -54,7 +58,13 @@ public class AltaMascotaActivity extends AppCompatActivity {
        spinnerDuenio = findViewById(R.id.spinnerDuenio);
        btnGuardar = findViewById(R.id.btnGuardar);
        txtMensaje=findViewById(R.id.txt_mensaje_alta_mascota);
+       txtVolver= findViewById(R.id.txt_volver_alta_mascota);
    }
+    public void volver(){
+        Intent i= new Intent(this, ListadoMascotasActivity.class);
+        startActivity(i);
+
+    }
 
    private ArrayList<String> mostrarPropietarios(){
        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
