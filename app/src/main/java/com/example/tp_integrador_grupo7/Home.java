@@ -22,7 +22,7 @@ import com.example.tp_integrador_grupo7.listados.ListadoReportesActivity;
 public class Home extends AppCompatActivity {
 
     private TextView textViewUsuario, txtCerrarSesion,txtIdUsuario;
-    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnVeterinarios, btnConfiguracion, btnPropietarios;
+    private Button btnCitas, btnMascotas, btnTratamientos, btnReportesMedicos, btnPropietarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,6 @@ public class Home extends AppCompatActivity {
         btnMascotas = findViewById(R.id.button5);
         btnTratamientos = findViewById(R.id.button7);
         btnReportesMedicos = findViewById(R.id.button8);
-        btnVeterinarios = findViewById(R.id.button9);
-        btnConfiguracion = findViewById(R.id.button10);
         btnPropietarios=findViewById(R.id.btn_propietarios);
 
         // Configurar el nombre de usuario
