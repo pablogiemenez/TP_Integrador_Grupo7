@@ -65,7 +65,7 @@ public class DataReportes {
     // Método para mostrar reportes
     public ArrayList<Reporte> mostrarReportes() {
         ArrayList<Reporte> listaReportes = new ArrayList<>();
-        executor.execute(() -> {
+        Thread thread= new Thread(() -> {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -94,6 +94,13 @@ public class DataReportes {
                 );
             }
         });
+        thread.start();
+        try{
+            thread.join();
+
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
         return listaReportes;
     }
 }

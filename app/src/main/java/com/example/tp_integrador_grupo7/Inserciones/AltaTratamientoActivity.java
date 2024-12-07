@@ -40,7 +40,7 @@ public class AltaTratamientoActivity extends AppCompatActivity {
         spinnerCitas = findViewById(R.id.spinnerCitas);
         btnGuardarTratamiento = findViewById(R.id.btnGuardarTratamiento);
         txtVolver=findViewById(R.id.txt_volver_alta_tratamiento);
-
+        txtVolver.setOnClickListener(v->volverHome());
         // Inicializamos DataTratamientos
         dataTratamientos = new DataTratamientos(this);
 

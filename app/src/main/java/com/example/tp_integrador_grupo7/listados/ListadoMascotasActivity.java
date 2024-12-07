@@ -24,6 +24,7 @@ import java.util.ArrayList;
 public class ListadoMascotasActivity extends AppCompatActivity {
     private ListView lvMascotas;
     private Button btnNuevoRegistro;
+    private TextView txtVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class ListadoMascotasActivity extends AppCompatActivity {
             return insets;
         });
         initVars();
+        txtVolver.setOnClickListener(v->volverHome());
         btnNuevoRegistro.setOnClickListener(v->irAltaMascota());
         setLvMascotas();
     }
@@ -43,8 +45,12 @@ public class ListadoMascotasActivity extends AppCompatActivity {
     public void initVars() {
         lvMascotas = findViewById(R.id.lv_mascotas);
         btnNuevoRegistro=findViewById(R.id.btn_nuevo_registro_mascota);
+        txtVolver= findViewById(R.id.txt_volver_listado_mascotas);
     }
-
+    public void volverHome(){
+        Intent i =new Intent(this, Home.class);
+        startActivity(i);
+    }
     public void irAltaMascota(){
         Intent i= new Intent(this, AltaMascotaActivity.class);
         startActivity(i);

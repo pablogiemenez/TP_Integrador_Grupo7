@@ -46,7 +46,7 @@ public class ListadoReportesActivity extends AppCompatActivity {
             ArrayList<Reporte> listaReportes = data.mostrarReportes();
             if (listaReportes != null && !listaReportes.isEmpty()) {
                 ArrayAdapter<Reporte> arrayAdapter = new ArrayAdapter<>(this,
-                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaReportes);
+                        android.R.layout.simple_list_item_1, listaReportes);
                 lvReportes.setAdapter(arrayAdapter);
             } else {
                 Toast.makeText(this, "No hay reportes disponibles", Toast.LENGTH_SHORT).show();

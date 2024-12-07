@@ -1,5 +1,7 @@
 package com.example.tp_integrador_grupo7.entidades;
 
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
+
 import java.sql.Date;
 
 public class Reporte {
@@ -45,9 +47,11 @@ public class Reporte {
 
     @Override
     public String toString() {
+
         return "Diagnóstico: " + diagnostico +
                 "\nHallazgos: " + hallazgos +
                 "\nCita ID: " + idCita;
     }
+
 }
 
