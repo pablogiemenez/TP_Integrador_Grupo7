@@ -4,27 +4,19 @@ import java.sql.Date;
 
 public class Reporte {
     private int id;
-    private int idCita;
     private String diagnostico;
     private String hallazgos;
-    private Date fecha;
+    private int idCita;
 
-    public Reporte(){}
+    public Reporte() {}
 
+    // Getters y Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdCita() {
-        return idCita;
-    }
-
-    public void setIdCita(int idCita) {
-        this.idCita = idCita;
     }
 
     public String getDiagnostico() {
@@ -43,15 +35,19 @@ public class Reporte {
         this.hallazgos = hallazgos;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public int getIdCita() {
+        return idCita;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setIdCita(int idCita) {
+        this.idCita = idCita;
     }
 
-    public String toString(){
-        return id + " - " + diagnostico + " - " + hallazgos + " - " + fecha + " - " + idCita;
+    @Override
+    public String toString() {
+        return "Diagnóstico: " + diagnostico +
+                "\nHallazgos: " + hallazgos +
+                "\nCita ID: " + idCita;
     }
 }
+

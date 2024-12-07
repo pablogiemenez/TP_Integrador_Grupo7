@@ -8,7 +8,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,34 +23,48 @@ public class ListadoReportesActivity extends AppCompatActivity {
     private Button btnNuevoReporte;
     private ListView lvReportes;
     private TextView txtVolver;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_listado_reportes);
-        innitVars();
+
+        // Inicializar variables
+        initVars();
+
+        // Configurar eventos
         btnNuevoReporte.setOnClickListener(view -> {
-            Intent i= new Intent(this, AltaReporteActivity.class);
+            Intent i = new Intent(this, AltaReporteActivity.class);
             startActivity(i);
         });
-        txtVolver.setOnClickListener(v->volverHome());
+
+        txtVolver.setOnClickListener(v -> volverHome());
+
+        // Cargar lista de reportes
         DataReportes data = new DataReportes(this);
         try {
-            ArrayAdapter<Reporte> arrayAdapter = new ArrayAdapter<Reporte>(this,
-                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, data.mostrarReportes());
-            lvReportes.setAdapter(arrayAdapter);
-        }
-        catch (Exception e){
+            ArrayList<Reporte> listaReportes = data.mostrarReportes();
+            if (listaReportes != null && !listaReportes.isEmpty()) {
+                ArrayAdapter<Reporte> arrayAdapter = new ArrayAdapter<>(this,
+                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaReportes);
+                lvReportes.setAdapter(arrayAdapter);
+            } else {
+                Toast.makeText(this, "No hay reportes disponibles", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(this, "Error al cargar los reportes", Toast.LENGTH_SHORT).show();
         }
     }
-    private void volverHome(){
-        Intent i= new Intent(this, Home.class);
+
+    private void volverHome() {
+        Intent i = new Intent(this, Home.class);
         startActivity(i);
     }
-    private void innitVars(){
+
+    private void initVars() {
         btnNuevoReporte = findViewById(R.id.btnAggReporte);
         lvReportes = findViewById(R.id.lvReportes);
-        txtVolver= findViewById(R.id.txt_volver_reporte);
+        txtVolver = findViewById(R.id.txt_volver_reporte);
     }
 }

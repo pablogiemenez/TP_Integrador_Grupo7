@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ import java.util.ArrayList;
 
 public class AltaReporteActivity extends AppCompatActivity {
     private EditText etDiagnostico, etHallazgos;
-    private TextView twIdcita, twDiagnostico, twHallazgos, txtVolver;
+    private TextView txtVolver;
     private Button btnSave;
     private Spinner spinnerIdCita;
     private DataReportes data = new DataReportes(this);
@@ -37,37 +36,37 @@ public class AltaReporteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alta_reporte);
 
         // Inicializar variables
-        innitVars();
+        initVars();
 
         // Configurar eventos
         txtVolver.setOnClickListener(v -> volver());
-        btnSave.setOnClickListener(view -> guardarReportes());
+        btnSave.setOnClickListener(view -> guardarReporte());
 
         // Mostrar lista de citas en el Spinner
         ArrayList<Citas> listaCitas = mostrarCitas();
         if (listaCitas != null) {
-            ArrayAdapter<Citas> arrayAdapter = new ArrayAdapter<>(getApplicationContext(),
+            ArrayAdapter<Citas> arrayAdapter = new ArrayAdapter<>(this,
                     androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaCitas);
             spinnerIdCita.setAdapter(arrayAdapter);
         }
     }
 
     // Método para volver a la lista de reportes
-    public void volver() {
+    private void volver() {
         Intent i = new Intent(this, ListadoReportesActivity.class);
         startActivity(i);
     }
 
-    // Método para guardar reportes
-    private void guardarReportes() {
+    // Método para guardar un reporte
+    private void guardarReporte() {
         // Crear un nuevo reporte
         Reporte rep = new Reporte();
         rep.setDiagnostico(etDiagnostico.getText().toString());
         rep.setHallazgos(etHallazgos.getText().toString());
 
-        // Obtener el objeto seleccionado del Spinner
-        Citas citaSeleccionada = (Citas) spinnerIdCita.getSelectedItem();
-        if (citaSeleccionada != null) {
+        // Validar selección del Spinner
+        if (spinnerIdCita.getSelectedItem() instanceof Citas) {
+            Citas citaSeleccionada = (Citas) spinnerIdCita.getSelectedItem();
             rep.setIdCita(citaSeleccionada.getId());
         } else {
             Toast.makeText(this, "Selecciona una cita válida", Toast.LENGTH_SHORT).show();
@@ -89,19 +88,16 @@ public class AltaReporteActivity extends AppCompatActivity {
     }
 
     // Inicializar variables de la interfaz
-    private void innitVars() {
+    private void initVars() {
         spinnerIdCita = findViewById(R.id.spinnerIdCita);
         etDiagnostico = findViewById(R.id.etDiagnostico);
         etHallazgos = findViewById(R.id.etHallazgos);
-        twIdcita = findViewById(R.id.twIdcita);
-        twDiagnostico = findViewById(R.id.twDiagnostico);
-        twHallazgos = findViewById(R.id.twHallazgos); // Referencia correcta
-        btnSave = findViewById(R.id.btnSave);
         txtVolver = findViewById(R.id.txt_volver_alta_reporte);
+        btnSave = findViewById(R.id.btnSave);
     }
 
     // Mostrar citas en el Spinner
-    public ArrayList<Citas> mostrarCitas() {
+    private ArrayList<Citas> mostrarCitas() {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
         SQLiteDatabase bd = admin.getWritableDatabase();
         ArrayList<Citas> listaCitas = new ArrayList<>();
@@ -110,10 +106,10 @@ public class AltaReporteActivity extends AppCompatActivity {
             Cursor filas = bd.rawQuery("SELECT id, motivo FROM citas", null);
             if (filas.moveToFirst()) {
                 do {
-                    Citas citas = new Citas();
-                    citas.setId(filas.getInt(0));
-                    citas.setMotivo(filas.getString(1));
-                    listaCitas.add(citas);
+                    Citas cita = new Citas();
+                    cita.setId(filas.getInt(0));
+                    cita.setMotivo(filas.getString(1));
+                    listaCitas.add(cita);
                 } while (filas.moveToNext());
             } else {
                 Toast.makeText(this, "No hay citas disponibles", Toast.LENGTH_SHORT).show();
@@ -125,6 +121,7 @@ public class AltaReporteActivity extends AppCompatActivity {
         } finally {
             bd.close();
         }
+
         return listaCitas;
     }
 }
