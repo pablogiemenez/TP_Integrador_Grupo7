@@ -13,8 +13,11 @@ import com.example.tp_integrador_grupo7.entidades.Propietarios;
 import com.example.tp_integrador_grupo7.entidades.Reporte;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -39,8 +42,8 @@ public class DataReportes {
                 PreparedStatement pst = con.prepareStatement("INSERT INTO reportes (diagnostico, hallazgos, fecha, cita_id) VALUES (?, ?, ? ,?)");
                 pst.setString(1, reporte.getDiagnostico());
                 pst.setString(2, reporte.getHallazgos());
-                pst.setString(3, reporte.getFecha());
-                pst.setInt(4, reporte.getIdCita()); //CAMBIAR A TRATAMIENTOS SI ES NECESARIO, PQ LO ESTOY CONFUNDIENDO CON EL DER
+                pst.setDate(3, reporte.getFecha());
+                pst.setInt(4, reporte.getIdCita());
 
                 pst.executeUpdate();
                 pst.close();
@@ -55,32 +58,32 @@ public class DataReportes {
                         Toast.makeText(context, "Error al guardar el reporte", Toast.LENGTH_SHORT).show()
                 );
             }
-
         });
     }
 
-    public ArrayList<Citas> mostrarCitas(){
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this.context, "consultorioVeterinario", null, 1);
-        SQLiteDatabase bd = admin.getWritableDatabase();
-        ArrayList<Citas> listaCitas = new ArrayList<Citas>();
+    public ArrayList<Reporte> mostrarReportes(){
+        ArrayList<Reporte> listaReportes = new ArrayList<Reporte>();
+        executor.execute(() ->{
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("Select * FROM reportes");
 
-        try {
-            Cursor filas = bd.rawQuery("SELECT  id FROM citas", null);
-            if(filas.moveToFirst()){
-                do{
-                    Citas citas = new Citas();
-
-                    citas.setId(filas.getInt(0));
-                    listaCitas.add(citas);
-                } while (filas.moveToNext());
-            } else {
-                return null;
+                while(rs.next()){
+                    Reporte rep = new Reporte();
+                    rep.setId(rs.getInt("id"));
+                    rep.setIdCita(rs.getInt("cita_id"));
+                    rep.setDiagnostico(rs.getString("diagnostico"));
+                    rep.setHallazgos(rs.getString("hallazgos"));
+                    rep.setFecha(rs.getDate("fecha"));
+                    listaReportes.add(rep);
+                }
+                rs.close();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-        return listaCitas;
+        });
+        return listaReportes;
     }
 }

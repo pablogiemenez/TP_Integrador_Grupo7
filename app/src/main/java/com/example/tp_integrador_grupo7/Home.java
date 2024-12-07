@@ -90,15 +90,6 @@ public class Home extends AppCompatActivity {
             startActivity(intent);
         });
 
-       /* btnVeterinarios.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, AltaVeterinarioActivity.class);
-            startActivity(intent);
-        });
-
-        btnConfiguracion.setOnClickListener(v -> {
-            Intent intent = new Intent(Home.this, ConfiguracionActivity.class);
-            startActivity(intent);
-        });*/
         txtCerrarSesion.setOnClickListener(v->{
             session.setIdSession(null);
             session.setNombreUsuarioSession(null);

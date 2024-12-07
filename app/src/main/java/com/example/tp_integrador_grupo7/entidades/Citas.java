@@ -3,7 +3,7 @@ package com.example.tp_integrador_grupo7.entidades;
 import java.util.Date;
 
 public class Citas {
-    Integer id,id_mascota,id_veterinario;
+    int id,id_mascota,id_veterinario;
     String motivo;
     Date fecha;
 
@@ -65,7 +65,6 @@ public class Citas {
 
     @Override
     public String toString() {
-        return  "motivo='" + motivo + '\'' +
-                ", fecha=" + fecha;
+        return  id +" - " + motivo;
     }
 }

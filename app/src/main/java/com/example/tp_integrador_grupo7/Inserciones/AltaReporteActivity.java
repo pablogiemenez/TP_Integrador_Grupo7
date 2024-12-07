@@ -1,5 +1,7 @@
 package com.example.tp_integrador_grupo7.Inserciones;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
 import com.example.tp_integrador_grupo7.R;
 import com.example.tp_integrador_grupo7.datos.DataReportes;
 import com.example.tp_integrador_grupo7.datos.DataTratamientos;
@@ -19,6 +22,7 @@ import com.example.tp_integrador_grupo7.entidades.Citas;
 import com.example.tp_integrador_grupo7.entidades.Propietarios;
 import com.example.tp_integrador_grupo7.entidades.Reporte;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class AltaReporteActivity extends AppCompatActivity {
@@ -37,21 +41,23 @@ public class AltaReporteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {guardarReportes();}
         });
-        ArrayList<Citas> listaCitas = data.mostrarCitas();
+        ArrayList<Citas> listaCitas = mostrarCitas();
 
-        ArrayAdapter<Citas> arrayAdapter = new ArrayAdapter<Citas>(getApplicationContext(),
-                androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaCitas);
-        spinnerIdCita.setAdapter(arrayAdapter);
+        if(listaCitas!=null) {
+            ArrayAdapter<Citas> arrayAdapter = new ArrayAdapter<Citas>(getApplicationContext(),
+                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, listaCitas);
+            spinnerIdCita.setAdapter(arrayAdapter);
+        }
     }
 
     private void guardarReportes(){
     Reporte rep = new Reporte();
     rep.setDiagnostico(etDiagnostico.getText().toString());
-    rep.setFecha(etfecha.getText().toString());
+    rep.setFecha(Date.valueOf(etfecha.getText().toString()));
     rep.setHallazgos(etHallazgos.getText().toString());
     rep.setIdCita(Integer.parseInt(spinnerIdCita.getSelectedItem().toString()));
 
-    if (rep.getDiagnostico().isEmpty() || rep.getFecha().isEmpty() || rep.getHallazgos().isEmpty()){
+    if (rep.getDiagnostico().isEmpty() || rep.getFecha().toString().isEmpty() || rep.getHallazgos().isEmpty()){
         Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
         return;
         }
@@ -68,4 +74,30 @@ public class AltaReporteActivity extends AppCompatActivity {
         twHallazgos = findViewById(R.id.twFecha);
         btnSave = findViewById(R.id.btnSave);
     }
+
+    public ArrayList<Citas> mostrarCitas(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        ArrayList<Citas> listaCitas = new ArrayList<Citas>();
+
+        try {
+            Cursor filas = bd.rawQuery("SELECT id, motivo FROM citas", null);
+            if(filas.moveToFirst()){
+                do{
+                    Citas citas = new Citas();
+                    citas.setId(filas.getInt(0));
+                    citas.setMotivo(filas.getString(1));
+                    listaCitas.add(citas);
+                } while (filas.moveToNext());
+            } else {
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return listaCitas;
+    }
+
 }

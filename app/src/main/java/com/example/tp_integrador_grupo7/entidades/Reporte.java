@@ -7,7 +7,7 @@ public class Reporte {
     private int idCita;
     private String diagnostico;
     private String hallazgos;
-    private String fecha;
+    private Date fecha;
 
     public Reporte(){}
 
@@ -43,11 +43,15 @@ public class Reporte {
         this.hallazgos = hallazgos;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public String toString(){
+        return id + " - " + diagnostico + " - " + hallazgos + " - " + fecha + " - " + idCita;
     }
 }

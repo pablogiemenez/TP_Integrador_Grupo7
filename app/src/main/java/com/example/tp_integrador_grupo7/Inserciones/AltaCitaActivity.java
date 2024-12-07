@@ -37,7 +37,7 @@ public class AltaCitaActivity extends AppCompatActivity {
         idVeterinario = session.getIdSession();
         ArrayList<Mascotas> listaMascotas = mostrarMascotas();
         if(listaMascotas!=null){
-            ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(getApplicationContext(),
+            ArrayAdapter<Mascotas> arrayAdapter = new ArrayAdapter<Mascotas>(this,
                     androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaMascotas);
             spinnerMascota.setAdapter(arrayAdapter);
         }

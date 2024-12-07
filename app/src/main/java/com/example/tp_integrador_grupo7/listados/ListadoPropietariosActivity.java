@@ -33,17 +33,19 @@ public class ListadoPropietariosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_listado_propietarios);
-        btnNuevoRegistro= findViewById(R.id.btn_alta_propietario);
+        innitVars();
+
+
         btnNuevoRegistro.setOnClickListener(v->{
             Intent i =new Intent(this, AltaPropietariosActivity.class);
             startActivity(i);
         });
-        lvPropietarios=findViewById(R.id.lv_propietarios);
-        txtVolver=findViewById(R.id.txt_volver_listado_propietarios);
+
         txtVolver.setOnClickListener(v->{
             Intent i= new Intent(this, Home.class);
             startActivity(i);
         });
+
         setLvPropietarios();
         lvPropietarios.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id)->{
             Intent i = new Intent(this, DetallePropietarioActivity.class);
@@ -52,8 +54,14 @@ public class ListadoPropietariosActivity extends AppCompatActivity {
             startActivity(i);
 
         });
-
     }
+
+    private void innitVars(){
+        btnNuevoRegistro= findViewById(R.id.btn_alta_propietario);
+        lvPropietarios=findViewById(R.id.lv_propietarios);
+        txtVolver=findViewById(R.id.txt_volver_listado_propietarios);
+    }
+
     public void setLvPropietarios(){
         try {
             AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
