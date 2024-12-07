@@ -25,6 +25,7 @@
     <string name="id_cita">ID de Cita</string>
     <string name="diagnostico">Diagnostico</string>
     <string name="hallazgos">Hallazgos</string>
+    <string name="medicamento">Medicamento</string>
 
     <string name="btn_citas">Citas</string>
     <string name="btn_mascotas">Mascotas</string>
@@ -41,6 +42,7 @@
     <string name="ejemplo_mail">Ej: carlos@gmail.com</string>
     <string name="ejemplo_nombre_usuario">Ej: Carlos123</string>
     <string name="Ejemplo_tel">Ej: 1155667788</string>
+    <string name="ejemplo_dosis">Ej: 8hs</string>
 
     <string name="registro_veterinario">Registro Veterinario</string>
     <string name="nuevo_registro">Nuevo registro</string>

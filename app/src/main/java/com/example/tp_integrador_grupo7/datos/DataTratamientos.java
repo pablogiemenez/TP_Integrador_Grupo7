@@ -28,7 +28,7 @@ public class DataTratamientos {
         new Thread(() -> {
             try {
                 // Cargar el driver JDBC
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
 
                 // Establecer conexión
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);

@@ -22,7 +22,6 @@ import com.example.tp_integrador_grupo7.R;
 import java.util.ArrayList;
 
 public class ListadoMascotasActivity extends AppCompatActivity {
-    private TextView txtVolver, txtMensaje;
     private ListView lvMascotas;
     private Button btnNuevoRegistro;
 
@@ -37,23 +36,17 @@ public class ListadoMascotasActivity extends AppCompatActivity {
             return insets;
         });
         initVars();
-        txtVolver.setOnClickListener(v -> volverHome());
         btnNuevoRegistro.setOnClickListener(v->irAltaMascota());
         setLvMascotas();
     }
 
     public void initVars() {
-        txtVolver = findViewById(R.id.txt_volver_listado_mascotas);
         lvMascotas = findViewById(R.id.lv_mascotas);
-        txtMensaje = findViewById(R.id.txt_mensaje_proximas_mascotas);
         btnNuevoRegistro=findViewById(R.id.btn_nuevo_registro_mascota);
     }
+
     public void irAltaMascota(){
         Intent i= new Intent(this, AltaMascotaActivity.class);
-        startActivity(i);
-    }
-    public void volverHome() {
-        Intent i = new Intent(this, Home.class);
         startActivity(i);
     }
 
@@ -65,8 +58,7 @@ public class ListadoMascotasActivity extends AppCompatActivity {
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaMascotas);
                 lvMascotas.setAdapter(arrayAdapter);
             } else {
-                txtMensaje.setTextSize(20);
-                txtMensaje.setText("Aún no tienes mascotas registradas.");
+                Toast.makeText(this,"Aun no hay mascotas", Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();

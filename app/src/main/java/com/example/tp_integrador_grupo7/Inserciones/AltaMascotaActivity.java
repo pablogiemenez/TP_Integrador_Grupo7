@@ -65,9 +65,6 @@ public class AltaMascotaActivity extends AppCompatActivity {
            Cursor filas = bd.rawQuery("SELECT  nombre FROM propietarios", null);
            if(filas.moveToFirst()){
                do{
-
-                   //prop.setId(filas.getInt(0));
-
                    listaPropietarios.add(filas.getString(0));
                } while (filas.moveToNext());
            } else {

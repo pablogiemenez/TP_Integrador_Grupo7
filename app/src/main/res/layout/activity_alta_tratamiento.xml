@@ -22,7 +22,7 @@
         android:layout_height="46dp"
         android:layout_marginStart="36dp"
         android:ems="10"
-        android:hint="medicamento"
+        android:hint="@string/medicamento"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMedicamento" />
@@ -40,11 +40,11 @@
 
     <EditText
         android:id="@+id/etDosis"
-        android:layout_width="306dp"
+        android:layout_width="303dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
         android:ems="10"
-        android:hint="ej: 8hs "
+        android:hint="@string/ejemplo_dosis"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDosis" />
@@ -62,7 +62,7 @@
 
     <EditText
         android:id="@+id/etDuracion"
-        android:layout_width="309dp"
+        android:layout_width="303dp"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
         android:ems="10"
@@ -84,7 +84,7 @@
 
     <Spinner
         android:id="@+id/spinnerCitas"
-        android:layout_width="309dp"
+        android:layout_width="303dp"
         android:layout_height="41dp"
         android:layout_marginStart="36dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,15 +1,21 @@
 package com.example.tp_integrador_grupo7.Inserciones;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_integrador_grupo7.AdminSQLiteOpenHelper;
 import com.example.tp_integrador_grupo7.datos.DataTratamientos;
 import com.example.tp_integrador_grupo7.entidades.Tratamiento;
 import com.example.tp_integrador_grupo7.R;
+
+import java.util.ArrayList;
 
 public class AltaTratamientoActivity extends AppCompatActivity {
 
@@ -34,12 +40,15 @@ public class AltaTratamientoActivity extends AppCompatActivity {
         dataTratamientos = new DataTratamientos(this);
 
         // Configuramos el botón Guardar
-        btnGuardarTratamiento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                guardarTratamiento();
-            }
-        });
+        btnGuardarTratamiento.setOnClickListener(v -> guardarTratamiento());
+
+        ArrayList<String> listaCitas = mostrarCitas();
+        if(listaCitas!=null){
+            ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(),
+                    androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,listaCitas);
+            spinnerCitas.setAdapter(arrayAdapter);
+
+        }
     }
 
     private void guardarTratamiento() {
@@ -65,5 +74,28 @@ public class AltaTratamientoActivity extends AppCompatActivity {
 
         // Llamar al método para insertar tratamiento
         dataTratamientos.insertarTratamiento(tratamiento);
+    }
+
+    private ArrayList<String> mostrarCitas(){
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "consultorioVeterinario", null, 1);
+        SQLiteDatabase bd = admin.getWritableDatabase();
+        ArrayList<String> listaCitas = new ArrayList<String>();
+
+        try {
+            Cursor filas = bd.rawQuery("SELECT  id FROM propietarios", null);
+            //Cambiar lueguo para indentificar mejor ponerle el id y el nombre de la mascota
+            if(filas.moveToFirst()){
+                do{
+                    listaCitas.add(filas.getString(0));
+                } while (filas.moveToNext());
+            } else {
+                return null;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+        return listaCitas;
     }
 }
