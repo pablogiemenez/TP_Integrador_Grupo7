@@ -39,11 +39,11 @@ public class DataReportes {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-                PreparedStatement pst = con.prepareStatement("INSERT INTO reportes (diagnostico, hallazgos, fecha, cita_id) VALUES (?, ?, ? ,?)");
+                PreparedStatement pst = con.prepareStatement("INSERT INTO reportes (diagnostico, hallazgos, cita_id) VALUES (?, ?, ?)");
                 pst.setString(1, reporte.getDiagnostico());
                 pst.setString(2, reporte.getHallazgos());
-                pst.setDate(3, reporte.getFecha());
-                pst.setInt(4, reporte.getIdCita());
+                pst.setInt(3, reporte.getIdCita());
+
 
                 pst.executeUpdate();
                 pst.close();
