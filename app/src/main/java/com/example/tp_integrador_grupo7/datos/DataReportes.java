@@ -36,7 +36,7 @@ public class DataReportes {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
-                PreparedStatement pst = con.prepareStatement("INSERT INTO reportes (diagnostico, hallazgos, fecha, tratamiento_id) VALUES (?, ?, ? ,?)");
+                PreparedStatement pst = con.prepareStatement("INSERT INTO reportes (diagnostico, hallazgos, fecha, cita_id) VALUES (?, ?, ? ,?)");
                 pst.setString(1, reporte.getDiagnostico());
                 pst.setString(2, reporte.getHallazgos());
                 pst.setString(3, reporte.getFecha());

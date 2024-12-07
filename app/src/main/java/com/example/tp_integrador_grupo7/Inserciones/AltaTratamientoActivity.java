@@ -66,11 +66,10 @@ public class AltaTratamientoActivity extends AppCompatActivity {
 
         // Crear un objeto Tratamiento
         Tratamiento tratamiento = new Tratamiento();
-        tratamiento.setNombreMedicamento(medicamento);
+        tratamiento.setMedicamento(medicamento);
         tratamiento.setDosis(dosis);
         tratamiento.setDuracion(duracion);
-        tratamiento.setObservaciones("Número de cita: " + numeroCita);
-        tratamiento.setMascotaId(Integer.parseInt(numeroCita)); // Suponiendo que el número de cita es el ID de la mascota
+        tratamiento.setCitaId(Integer.parseInt(numeroCita)); // Suponiendo que el número de cita es el ID de la mascota
 
         // Llamar al método para insertar tratamiento
         dataTratamientos.insertarTratamiento(tratamiento);

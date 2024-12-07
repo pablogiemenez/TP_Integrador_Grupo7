@@ -59,7 +59,7 @@ public class ListadoCitasActivity extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"consultorioVeterinario",null,1);
         SessionVeterinario session= (SessionVeterinario) getApplication();
         ArrayList<String> listaCitas=admin.obtenerListaCitasXIdVeterinario(session.getIdSession());
-        if(listaCitas.isEmpty()){
+        if(!listaCitas.isEmpty()){
             ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,listaCitas);
             lvCitas.setAdapter(arrayAdapter);
         }else{

@@ -6,6 +6,7 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
@@ -33,14 +34,16 @@ public class DataTratamientos {
                 // Establecer conexión
                 Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
 
+                Date date = new Date(System.currentTimeMillis());
+
                 // Consulta SQL para insertar un tratamiento
-                String query = "INSERT INTO tratamientos (nombre_medicamento, dosis, duracion, observaciones, mascota_id) VALUES (?, ?, ?, ?, ?)";
+                String query = "INSERT INTO tratamientos (medicamento, dosis, duracion, id_cita, fecha_registro) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement pst = con.prepareStatement(query);
-                pst.setString(1, tratamiento.getNombreMedicamento());
+                pst.setString(1, tratamiento.getMedicamento());
                 pst.setString(2, tratamiento.getDosis());
                 pst.setString(3, tratamiento.getDuracion());
-                pst.setString(4, tratamiento.getObservaciones());
-                pst.setInt(5, tratamiento.getcitaId());
+                pst.setInt(4, tratamiento.getcitaId());
+                pst.setDate(5,date);
 
                 // Ejecutar la consulta
                 pst.executeUpdate();
